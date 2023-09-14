@@ -1,1 +1,1 @@
-print("Hello")
+print("dome so smart")
