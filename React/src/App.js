@@ -7,6 +7,8 @@ import {
 import Login from "./pages/Login";
 import MainPage from "./pages/MainPage";
 import { useEffect } from "react";
+import { Autosave, useAutosave } from 'react-autosave';
+import Register from "./pages/Register";
 
 function App() {
   const action = useNavigationType();
@@ -48,6 +50,7 @@ function App() {
     <Routes>
       <Route path="/" element={<MainPage />} />
       <Route path="/login" element={<Login />} />
+      <Route path="/Register" element={<Register />} />
     </Routes>
   );
 }
