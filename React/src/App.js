@@ -5,8 +5,12 @@ import {
   useLocation,
 } from "react-router-dom";
 import Login from "./pages/Login";
+import Register from "./pages/Register";
+import Verify from "./pages/Verify";
 import MainPage from "./pages/MainPage";
 import { useEffect } from "react";
+import { Autosave, useAutosave } from 'react-autosave';
+
 
 function App() {
   const action = useNavigationType();
@@ -48,6 +52,8 @@ function App() {
     <Routes>
       <Route path="/" element={<MainPage />} />
       <Route path="/login" element={<Login />} />
+      <Route path="/Register" element={<Register />} />
+      <Route path="/Verify" element={<Verify />} />
     </Routes>
   );
 }

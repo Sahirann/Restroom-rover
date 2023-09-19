@@ -1,0 +1,32 @@
+.bg{ 
+  position: relative;
+  background-image: url("../../public/background.png");
+  width: 100vw;
+  height: 100vh;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-size: cover;
+}
+.bg-small{
+  background-color: #d3c3af;
+  width: 921px;
+  height: 737px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.Verify{
+  margin-top: 60px;
+  font-size: 45px;
+  margin-bottom: 0;
+}
+.input-ID{
+
+}
+
+*{
+  color: #000;
+  font-family: Ropa Sans;
+}

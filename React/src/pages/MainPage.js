@@ -1,7 +1,7 @@
 import { useState, useCallback } from "react";
 import Menu from "../components/Menu";
 import PortalPopup from "../components/PortalPopup";
-import styles from "./MainPage.module.css";
+import "./MainPage.scoped.css";
 
 const MainPage = () => {
   const [isMenuOpen, setMenuOpen] = useState(false);

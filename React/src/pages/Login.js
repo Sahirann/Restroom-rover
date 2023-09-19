@@ -1,5 +1,7 @@
 import { useCallback } from "react";
-import styles from "./Login.module.css";
+import { Link } from "react-router-dom";
+import "./Login.scoped.css";
+
 
 const Login = () => {
   const onLoginClick = useCallback(() => {
@@ -11,27 +13,20 @@ const Login = () => {
   }, []);
 
   return (
-    <div className={styles.login}>
-      <img className={styles.backgroundIcon} alt="" src="/background@2x.png" />
-      <div className={styles.backgroudSmall} />
-      <div className={styles.username}>
-        <p className={styles.username1}>Username</p>
-      </div>
-      <div className={styles.loginChild} />
-      <div className={styles.username2} />
-      <div className={styles.password} />
-      <div className={styles.login1} onClick={onLoginClick} />
-      <div className={styles.register} onClick={onRegisterClick} />
-      <img className={styles.user1Icon} alt="" src="/user-1@2x.png" />
-      <div className={styles.text}>
-        <div className={styles.username3}>
-          <p className={styles.username1}>Username</p>
+
+    <div className="bg">
+      <div className="bg-small" >
+        <div className="bg-img">
+          <img className="img" alt="" src="/user-1@2x.png" />
         </div>
-        <div className={styles.password1}>
-          <p className={styles.username1}>Password</p>
+        
+        <input type="text" placeholder="Username" className="input-user" required="required" />
+        <input type="password" placeholder="Password" className="input-password" required="required" />
+        <div className="container-button">
+          <button className="button-login">Login</button>
+          <Link to="/Register" className="button-register">Register</Link>
         </div>
-        <div className={styles.login2}>login</div>
-        <div className={styles.register1}>Register</div>
+        
       </div>
     </div>
   );
