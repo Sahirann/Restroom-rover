@@ -1,32 +1,40 @@
 import { useCallback } from "react";
+import styles from "./Register.scoped.css";
 import { Link } from "react-router-dom";
-import "./Register.scoped.css";
 
-
-const Login = () => {
-  const onLoginClick = useCallback(() => {
-    // Please sync "MacBook Air - 1" to the project
+const Register = () => {
+  const onRegisterContainerClick = useCallback(() => {
+    // Please sync "login" to the project
   }, []);
 
-  const onRegisterClick = useCallback(() => {
-    // Please sync "Register" to the project
+  const onRegisterAndVerifyClick = useCallback(() => {
+    // Please sync "Verify" to the project
+  }, []);
+
+  const onCanelDisClick = useCallback(() => {
+    // Please sync "login" to the project
   }, []);
 
   return (
+    
     <div className="bg">
-      <div className="bg-small" >
-        <div className="bg-img">
-          <img className="img" alt="" src="/user-1@2x.png" />
+      {/* <Link to="/" className="buttom-back"></Link> */}
+      <div className="bg-small">
+        <h1 className="text-rg">Register</h1> 
+        <input type="email" placeholder="Email" className="input" />
+        <input type="text" placeholder="Username" className="input" />
+        <input type="text" placeholder="Create password" className="input" />
+        <input type="text" placeholder="Confirm password" className="input"/>
+        <div className="container-botton">
+          <button className="button-login" required>Submit</button>
+          <p className="text-or">or</p>
+          <button className="button-verifiy" required>Submit and Verifiy
+          </button>
         </div>
-        
-        <input type="text" placeholder="Username" className="input-user" required="required" />
-        <input type="text" placeholder="Password" className="input-password" required="required" />
-        <div className="container-button">
-          <button className="button-login">Login</button>
-          <button className="button-register">Register</button>
-        </div>
-      </div>
+       </div>
+       
     </div>
+    
   );
 };
 

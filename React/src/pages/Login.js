@@ -21,10 +21,10 @@ const Login = () => {
         </div>
         
         <input type="text" placeholder="Username" className="input-user" required="required" />
-        <input type="text" placeholder="Password" className="input-password" required="required" />
+        <input type="password" placeholder="Password" className="input-password" required="required" />
         <div className="container-button">
           <button className="button-login">Login</button>
-          <button className="button-register">Register</button>
+          <Link to="/Register" className="button-register">Register</Link>
         </div>
         
       </div>

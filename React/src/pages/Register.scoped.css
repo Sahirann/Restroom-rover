@@ -1,0 +1,81 @@
+
+.bg { 
+  position: relative;
+  background-image: url("../../public/background.png");
+  width: 100vw;
+  height: 100vh;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-size: cover;
+}
+.bg-small{
+  background-color: #d3c3af;
+  width: 921px;
+  height: 737px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.text-rg{
+  margin-top: 60px;
+  font-size: 45px;
+  margin-bottom: 0;
+}
+.input{
+  font-size: 29px;
+  background-color: #d9d9d9;
+  width: 450px;
+  height: 65px;
+  border-radius: 40px;
+  border: 0;
+  padding-left: 25px;
+  margin-top: 35px;
+
+}
+.container-botton{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 35px;
+}
+.button-login{
+  font-size: 23px;
+  background-color: #d9d9d9;
+  border: 0;
+  border-radius: 40px;
+  width: 100px;
+  height: 49px;
+  margin-right: 50px;
+}
+.text-or{
+  font-size: 30px;
+  margin-top: 10px;
+
+}
+.button-verifiy{
+  font-size: 23px;
+  background-color: #d9d9d9;
+  border: 0;
+  border-radius: 40px;
+  width: 200px;
+  height: 49px;
+  margin-left: 50px;
+}
+button:hover{
+  background-color: gray;
+  color: white;
+}
+button:active{
+  transform: translateY(2px);
+  background-color: #1E1E1E;
+}
+/* .button-back{
+  background-image: url("../../public/icon menu.png");
+  position: ;
+} */
+*{
+  font-family: Ropa Sans;
+  color: #000;
+}
