@@ -178,3 +178,7 @@
   color: rgba(32, 32, 32, 0.5);
   font-family: Leelawadee;
 }
+.leaflet-container {
+  height: 100vh;
+
+}
