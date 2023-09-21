@@ -1,5 +1,5 @@
 .card{
-  background-color: #E6E6E6);
+  background-color: #E6E6E6;
   width: 300px;
   
   border-radius: 20px;
@@ -38,6 +38,7 @@
 .comment{
   margin: 0;
   margin-left: 3px;
+  margin-top: 3px;
 }
 
 .pic{
