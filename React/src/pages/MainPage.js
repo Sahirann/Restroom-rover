@@ -6,12 +6,13 @@ import "./MainPage.scoped.css";
 import { MapContainer, TileLayer, Marker,Popup,useMap } from 'react-leaflet'
 import "leaflet/dist/leaflet.css";
 import "./MainPage.css"
+import { Icon } from "leaflet";
 
-function MyComponent() {
-  const map = useMap()
-  console.log('map center:', map.getCenter())
-  return null
-}
+// function MyComponent() {
+//   const map = useMap()
+//   console.log('map center:', map.getCenter())
+//   return null
+// }
 
 
 const MainPage = () => {
@@ -25,17 +26,48 @@ const MainPage = () => {
     setMenuOpen(false);
   }, []);
 
-  const position = [51.505, -0.09]
+  const markers = [
+    {
+      geocode : [13.821409,100.513405],
+      popUp: "pop up 1"
+    },
+    {
+      geocode : [13.824774,100.515854],
+      popUp: "pop up 1"
+    },
+    {
+      geocode : [13.824072,100.516106],
+      popUp: "pop up 1"
+    }
+
+  ]
+  const markericon = new Icon({
+    iconUrl:"/Pinorange.png",
+    iconSize: [70,38]
+  })
+
+  // const position = [51.505, -0.09]
 
   return (
     <div>
       <div>
-        <MapContainer center={[48.8566, 2.3522]} zoom={13}> 
+        <div>
+        </div>
+        <MapContainer center={[13.821813, 100.514062]} zoom={13}> 
           <TileLayer
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-          />
+          /> 
+          {markers.map(marker => (
+            <Marker position={marker.geocode} icon={markericon}>
+            
+            </Marker>
+            ))
+          }
         </MapContainer>
+        <p>
+            asd
+          </p>
       </div>
       
       {isMenuOpen && (
