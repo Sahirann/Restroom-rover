@@ -10,12 +10,16 @@
     "@types/node": "^16.11.14",
     "@types/react": "^18.0.28",
     "@types/react-dom": "^18.0.11",
+    "cors": "^2.8.5",
     "craco-plugin-scoped-css": "^1.1.1",
+    "express": "^4.18.2",
     "leaflet": "^1.9.4",
+    "mysql": "^2.18.1",
     "react": "^18.2.0",
     "react-autosave": "^0.4.2",
     "react-dom": "^18.2.0",
     "react-leaflet": "^4.2.1",
+    "react-rating-stars-component": "^2.2.0",
     "react-router-dom": "^6.2.1",
     "react-scripts": "5.0.1",
     "web-vitals": "^2.1.4"
@@ -24,7 +28,8 @@
     "start": "craco start",
     "build": "craco build",
     "test": "craco test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "dev": "concurrently \"craco start\" \"node --watch server/index.js\""
   },
   "eslintConfig": {
     "root": true
@@ -40,5 +45,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.1"
   }
 }

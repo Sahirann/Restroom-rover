@@ -7,6 +7,7 @@ import {
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Verify from "./pages/Verify";
+import DetailPin from "./pages/DetailPin";
 import MainPage from "./pages/MainPage";
 import { useEffect } from "react";
 import { Autosave, useAutosave } from 'react-autosave';
@@ -49,11 +50,14 @@ function App() {
   }, [pathname]);
 
   return (
+    
+
     <Routes>
       <Route path="/" element={<MainPage />} />
       <Route path="/login" element={<Login />} />
       <Route path="/Register" element={<Register />} />
       <Route path="/Verify" element={<Verify />} />
+      <Route path="/Detail-pin" element={<DetailPin />} />
     </Routes>
   );
 }
