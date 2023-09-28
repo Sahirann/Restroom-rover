@@ -1,0 +1,84 @@
+.block{
+  position: relative;
+  width: 30vw;
+  height: 100vh;
+  padding-bottom: 0;
+  background-color: #E6E6E6 ;
+  overflow: scroll;
+  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  
+}
+.top-header{
+  
+  top: 0;
+  left: 0;
+  background-color: #E8C69E;
+  height: 10%;
+  width: 30vw;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+}
+.logo{
+  width: 15vw;;
+  height: 20%;
+}
+.pic{
+  width: 25vw;
+  border-radius: 10px;
+  display: block;
+  margin: 110px auto 0;
+}
+.name{
+  margin-top: 5px;
+  margin-left: 6%;
+  font-size: 3vw;
+}
+.address{
+  font-size: 1.5vw;
+  margin-left: 7%;
+  word-wrap: break-word;
+}
+.container-score{
+  display: flex;
+  align-items: center;
+  
+}
+.star{
+  margin-left: 15px;
+  margin-right: 0;
+}
+.score{
+  font-size: 4vw;
+  margin-top: 5px;
+  margin-left: 20px;
+}
+.line {
+  border: 1px solid #000; /* Adjust the color and border properties as needed */
+  margin: 10px ; /* Adjust the margin as needed */
+}
+.button-review{
+  display: block;
+  margin: 110px auto 0;
+  width: 50%;
+  margin-top: 20px;
+  font-size: 2vw;
+  background-color: grey;
+  align-items: center;
+
+}
+.comment{
+  display: block;
+  margin: 110px auto 0;
+}
+*{
+  font-family: Ropa Sans;
+  color: #000;
+}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;

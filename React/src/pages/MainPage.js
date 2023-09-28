@@ -4,6 +4,8 @@ import Menu from "../components/Menu";
 import PortalPopup from "../components/PortalPopup";
 import "./MainPage.scoped.css";
 import Card from "../components/Card";
+import Review from "../components/Review";
+import WReview from "../components/wReview";
 import { MapContainer, TileLayer, Marker,Popup,useMap } from 'react-leaflet'
 import "leaflet/dist/leaflet.css";
 import "./MainPage.css"
@@ -44,13 +46,21 @@ const MainPage = () => {
     <div>
       
       <div>
-        {detailcard}
-        <MapContainer center={[13.822670, 100.520928]} zoom={15}> 
-          <TileLayer
-            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-          />
-        </MapContainer>
+        {/* /* <WReview></WReview> */}
+        
+        {/* <Review className="review"></Review> */}
+        {/* <Card></Card> */}
+        {/* {detailcard} */}
+        <div className="containermap">
+          <MapContainer  center={[13.822670, 100.520928]} zoom={15}> 
+            <div className="review">
+              <Review ></Review>
+            </div>
+            <TileLayer
+              attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+              url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"/>
+          </MapContainer>
+        </div>
         
       </div>
       
