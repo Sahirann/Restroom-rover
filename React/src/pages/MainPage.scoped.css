@@ -182,3 +182,13 @@
   height: 100vh;
 
 }
+.containermap{
+  position: fixed;
+  left: 0;
+  z-index: -1;
+}
+.review{
+  /* position: absolute; */
+  left: 0;
+  z-index: 10;
+}

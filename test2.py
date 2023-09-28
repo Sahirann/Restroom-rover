@@ -1,1 +1,0 @@
-print("win so smart")
