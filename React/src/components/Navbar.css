@@ -1,0 +1,146 @@
+@import url("https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300;400;700&display=swap");
+
+.menu{
+	left: 0;
+	z-index: 10;
+	position: absolute;;
+}
+
+.search-bar-container {
+	display: flex;
+	align-items: center;
+	margin-bottom: 20px;
+	background-color: #fff;
+
+  }
+  
+  /* Search Input */
+  .search-input {
+	
+	/* padding: 14px;
+	font-size: 16px;
+	border: 1px solid #ccc;
+	border-radius: 22px; */
+	/* margin-right: 500px; */
+	/* margin-top: 17px; */
+	margin-left: 230px;
+	/* display: ;
+	align-items: 'center'; */
+	/* width: 280px; */
+	
+	/* position: relative; */
+  }
+
+  .searchicon{
+	position: absolute;
+  }
+  
+  /* Search Button */
+  .search-button {
+	padding: 8px 12px;
+	font-size: 16px;
+	background-color: #007bff;
+	color: #fff;
+	border: 1px solid #007bff;
+	border-radius: 4px;
+	cursor: pointer;
+  }
+  
+  /* Search Button Hover State */
+  .search-button:hover {
+	background-color: #0056b3;
+	border-color: #0056b3;
+  }
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+	font-family: "Titillium Web", sans-serif;
+}
+
+:root {
+	--mainColor: #E8C69E;
+	--mainColorLight: #5767aa;
+	--secondaryColor: #db2b39;
+	--textColor: #000000;
+}
+
+header {
+	/* position: absolute; */
+	display: flex;
+	align-items: center;
+	/* justify-content: space-between; */
+	height: 75px;
+	padding: 0 2rem;
+	background-color: var(--mainColor);
+	color: var(--textColor);
+	gap: 25px;
+	position: relative;
+
+
+}
+
+nav a {
+	margin: 0 1rem;
+	color: var(--textColor);
+	text-decoration: none;
+}
+
+nav a:hover {
+	color: var(--secondaryColor);
+}
+
+.nav-btn {
+	padding: 10px;
+	cursor: pointer;
+	background: transparent;
+	border: none;
+	outline: none;
+	color: var(--textColor);
+	visibility: hidden;
+	opacity: 0;
+	font-size: 2rem;
+	margin-top: 8px;
+}
+
+header div,
+nav {
+	display: flex;
+	align-items: center;
+}
+
+@media only screen  {
+	header .nav-btn {
+		visibility: visible;
+		opacity: 1;
+	}
+
+	header nav {
+		position: fixed;
+		top: -100vh;
+		left: 0;
+		height: 100%;
+		width: 100%;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		gap: 1.5rem;
+		background-color: var(--mainColor);
+		transition: 1s;
+	}
+
+	header .responsive_nav {
+		transform: translateY(100vh);
+	}
+
+	nav .nav-close-btn {
+		position: absolute;
+		top: 2rem;
+		right: 2rem;
+	}
+
+	nav a {
+		font-size: 1.5rem;
+	}
+}

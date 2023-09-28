@@ -27,19 +27,12 @@
   z-index: 1;
 }
 .menu {
-  position: absolute;
-  top: 46px;
-  left: 37px;
-  border-radius: 23px;
+  /* position: absolute; */
+
+  border-radius: 12px;
   background-color: #e8c69e;
-  width: 59px;
-  height: 59px;
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  justify-content: flex-start;
-  gap: 10px;
-  cursor: pointer;
+  border: none;
+
 }
 .search {
   position: relative;
@@ -178,10 +171,7 @@
   color: rgba(32, 32, 32, 0.5);
   font-family: Leelawadee;
 }
-.leaflet-container {
-  height: 100vh;
 
-}
 .containermap{
   width: 100vw;
   height: 100vh;
