@@ -1,0 +1,45 @@
+.background{
+    width: 90%;
+    background-color: white;
+    border-radius: 30px;
+    background-size: auto;
+    background-repeat: no-repeat;
+    display: block;
+    margin: 5% auto 0;
+    
+   
+}
+.container-info{
+    display: flex;
+    margin-left: 5%;
+    
+}
+.container-name{
+    margin-left: 5%;
+    margin-top: 10px;
+}
+.pic-pro{
+    width: 4vw;
+    margin-top: 6%;
+}
+.name{
+    margin-bottom: 0;
+    font-size: 2vw;
+    margin-top: 15px;
+}
+.comment{
+    margin-left: 5%;
+    margin-top: 5%;
+    word-wrap: break-word;
+    font-size: 1.3vw;
+}
+.pic{
+    width: 10vw;
+    border-radius: 10px;
+    margin-left: 5%;
+    margin-bottom: 5%;
+}
+*{
+    font-family: Ropa Sans;
+    color: #000;
+}

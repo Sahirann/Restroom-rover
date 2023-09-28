@@ -171,3 +171,14 @@
   color: rgba(32, 32, 32, 0.5);
   font-family: Leelawadee;
 }
+
+.containermap{
+  position: fixed;
+  left: 0;
+  z-index: -1;
+}
+.review{
+  /* position: absolute; */
+  left: 0;
+  z-index: 10;
+}

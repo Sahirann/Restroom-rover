@@ -14,10 +14,11 @@ const Verify = () => {
     <div className="bg">
       <div className="bg-small">
         <h1 className="Verify" >Verify</h1>
-        <input type="number" className="input-ID"/>
-        <p>upload ID card or Passport</p>
-        <input type="file" id="img" accept="image" />
-        <input type="submit" />
+        <input type="number" placeholder="ID card or Passport" className="input-ID"/>
+        <p className="text-upload">upload ID card or Passport</p>
+        <input type="file" className="buttom-upload" id="img" accept="image" />
+        <div className="pic">Hello</div>
+        <input type="submit" className="buttom-submit"/>
         
       </div>  
     </div>

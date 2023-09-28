@@ -1,10 +1,14 @@
 import React from "react";
-import { useState, useCallback } from "react";
+import { useState, useCallback ,useEffect} from "react";
 import Menu from "../components/Menu";
 import PortalPopup from "../components/PortalPopup";
 import "./MainPage.scoped.css";
+import Card from "../components/Card";
+import Review from "../components/Review";
+import WReview from "../components/wReview";
 import "leaflet/dist/leaflet.css";
 import "./MainPage.css"
+import axios from "axios"
 import { Icon, imageOverlay } from "leaflet";
 import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet'
 ////
@@ -12,6 +16,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import Navbar from "../components/Navbar";
 import SearchBar from "../components/Searchbar";
 ///
+
 
 
 const MainPage = () => {
@@ -67,6 +72,16 @@ const MainPage = () => {
   })
 
   // const position = [51.505, -0.09]
+  const [detail, setdetail] = useState([]);
+  useEffect(() => {
+    axios.get("http://localhost:3001/").then((response) => {
+      setdetail(response.data);
+      console.log("update");
+    }).catch((err) => { console.log(err) });
+  }, []);
+  const detailcard = detail.map((data, index) => {
+    return <Card key={index} data={data} ></Card>
+  })
 
   return (
     <div>
