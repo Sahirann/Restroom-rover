@@ -1,8 +1,13 @@
 import { useCallback } from "react";
 import { useNavigate } from "react-router-dom";
-import styles from "./Menu.module.css";
+import "./Menu.css";
 
-const Menu = () => {
+const Menu = (props) => {
+
+  const {isOpen} = props;
+  
+  const Slidestyle = isOpen?"open":"close"
+
   const navigate = useNavigate();
 
   const onBackIconClick = useCallback(() => {
@@ -22,71 +27,71 @@ const Menu = () => {
   }, []);
 
   return (
-    <div className={styles.menu}>
-      <div className={styles.menuChild} />
-      <div className={styles.logo}>
-        <div className={styles.restroomrover}>
-          <span className={styles.restroomroverTxt}>
+    <div className={`menu ${Slidestyle}`}>
+      <div className="menuChild" />
+      <div className="logo">
+        <div className="restroomrover">
+          <span className="restroomroverTxt">
             <span>Restroom</span>
-            <span className={styles.rover}>Rover</span>
+            <span className="rover">Rover</span>
           </span>
         </div>
-        <div className={styles.logo1}>
-          <div className={styles.logoChild} />
-          <div className={styles.rParent}>
-            <div className={styles.r}>R</div>
-            <div className={styles.r1}>R</div>
+        <div className="logo1">
+          <div className="logoChild" />
+          <div className="rParent">
+            <div className="r">R</div>
+            <div className="r1">R</div>
           </div>
         </div>
       </div>
       <img
-        className={styles.backIcon}
+        className="backIcon"
         alt=""
         src="/back.svg"
         onClick={onBackIconClick}
       />
-      <div className={styles.profile}>
-        <div className={styles.profileChild} />
-        <img className={styles.personIcon} alt="" src="/person@2x.png" />
-        <div className={styles.user}>User</div>
+      <div className="profile">
+        <div className="profileChild" />
+        <img className="personIcon" alt="" src="/person@2x.png" />
+        <div className="user">User</div>
       </div>
-      <div className={styles.login} onClick={onLoginContainerClick}>
-        <div className={styles.loginChild} />
-        <div className={styles.login1}>Login</div>
-        <img className={styles.vectorIcon} alt="" src="/vector3.svg" />
+      <div className="login" onClick={onLoginContainerClick}>
+        <div className="loginChild" />
+        <div className="login1">Login</div>
+        <img className="vectorIcon" alt="" src="/vector3.svg" />
       </div>
-      <img className={styles.menuItem} alt="" src="/line-2.svg" />
-      <div className={styles.pin} onClick={onPinContainerClick}>
-        <div className={styles.ellipseParent}>
-          <div className={styles.groupChild} />
+      <img className="menuItem" alt="" src="/line-2.svg" />
+      <div className="pin" onClick={onPinContainerClick}>
+        <div className="ellipseParent">
+          <div className="groupChild" />
           <img
-            className={styles.toiletBowlIcon}
+            className="toiletBowlIcon"
             alt=""
             src="/toilet-bowl@2x.png"
           />
         </div>
-        <div className={styles.pinRestroom}>Pin Restroom</div>
+        <div className="pinRestroom">Pin Restroom</div>
       </div>
-      <div className={styles.veri} onClick={onVeriContainerClick}>
-        <div className={styles.groupParent}>
-          <div className={styles.ellipseParent}>
-            <div className={styles.groupChild} />
-            <div className={styles.toiletBowl} />
+      <div className="veri" onClick={onVeriContainerClick}>
+        <div className="groupParent">
+          <div className="ellipseParent">
+            <div className="groupChild" />
+            <div className="toiletBowl" />
           </div>
-          <div className={styles.verifyAccount}>Verify Account</div>
+          <div className="verifyAccount">Verify Account</div>
         </div>
-        <img className={styles.vectorIcon1} alt="" src="/vector4.svg" />
+        <img className="vectorIcon1" alt="" src="/vector4.svg" />
       </div>
-      <div className={styles.contract}>
-        <div className={styles.contractInner}>
-          <div className={styles.contractInner}>
-            <img className={styles.ellipseParent} alt="" src="/group-3.svg" />
-            <div className={styles.contractSupport}>Contract support</div>
+      <div className="contract">
+        <div className="contractInner">
+          <div className="contractInner">
+            <img className="ellipseParent" alt="" src="/group-3.svg" />
+            <div className="contractSupport">Contract support</div>
           </div>
         </div>
-        <img className={styles.vectorIcon2} alt="" src="/vector5.svg" />
+        <img className="vectorIcon2" alt="" src="/vector5.svg" />
       </div>
-      <div className={styles.menuInner} />
+      <div className="menuInner" />
     </div>
   );
 };
