@@ -25,6 +25,7 @@ function Navbar() {
 
     const toggleSidebar = () => {
         setSidebarOpen(!isSidebarOpen);
+  
     };
 
     return (
@@ -77,9 +78,9 @@ function Navbar() {
             <button className="nav-btn" onClick={showNavbar}>
                 <FaBars/>
             </button> */}
-            <div className='menu'>
+
                 <Menu isOpen={isSidebarOpen} />
-            </div>
+
         </header>
         
     );

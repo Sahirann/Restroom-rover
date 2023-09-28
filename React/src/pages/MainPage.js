@@ -114,12 +114,10 @@ const MainPage = () => {
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           />
           {markers.map(marker => (
-
             <Marker position={marker.geocode} icon={markericon}></Marker>
           ))
           }
           {markerred.map(marker => (
-
             <Marker position={marker.geocode} icon={markericonred}></Marker>
           ))
           }
