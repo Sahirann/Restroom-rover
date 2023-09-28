@@ -2,6 +2,8 @@
   position: relative;
   width: 30vw;
   height: 100vh;
+  margin-right: 0;
+  padding-right: 0;
   padding-bottom: 0;
   background-color: #E6E6E6 ;
   overflow: scroll;
@@ -32,6 +34,7 @@
   border-radius: 10px;
   display: block;
   margin: 110px auto 0;
+  margin-top: 20px;
 }
 .name{
   margin-top: 5px;
