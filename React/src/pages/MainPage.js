@@ -53,14 +53,15 @@ const MainPage = () => {
         {/* {detailcard} */}
         <div className="containermap">
           <MapContainer  center={[13.822670, 100.520928]} zoom={15}> 
-            <div className="review">
-              <Review ></Review>
-            </div>
             <TileLayer
               attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
               url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"/>
           </MapContainer>
         </div>
+        <div className="review">
+            <Review></Review>
+        </div>
+        
         
       </div>
       
