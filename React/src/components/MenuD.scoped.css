@@ -1,0 +1,123 @@
+.background {
+    width: 27vw;
+    height: 100vh;
+    background-color: #312F2E;
+
+
+}
+
+.container-top {
+    display: flex;
+
+}
+
+.logo {
+    margin-top: 1vw;
+    width: 20vw;
+}
+
+.back {
+    margin-top: 2.75vw;
+    margin-left: 12%;
+    width: 3vw;
+    height: 3vw;
+    
+}
+
+.line {
+    border: 1px solid #474545;
+    /* Adjust the color and border properties as needed */
+    margin: 10px;
+    /* Adjust the margin as needed */
+}
+.line2{
+    border: 1px solid #474545;
+    /* Adjust the color and border properties as needed */
+    margin: 10px;
+    margin-top: 55vh;
+
+}
+
+.menu{
+    /* background-color: blue; */
+    width: 27vw;
+    height: 50vh;
+    /* z-index: -1; */
+    
+}
+.submenu{
+    display: flex;
+    align-items: center;
+    margin-top: 10%;
+}
+.s-pin{
+    width: 4.5vw;
+    margin-left: 15%;
+}
+.t-pin{
+    font-size: 1.75vw;
+    margin-left: 2vw;
+}
+.s-con{
+    width: 4vw;
+    margin-left: 15%;
+}
+.t-con{
+    font-size: 1.75vw;
+    margin-left: 2.25vw;
+}
+.V-acc{
+    display: flex;
+    /* margin-top: 115%; */
+    align-items: center;
+}
+.s-ver{
+    width: 3vw;
+    margin-left: 30%;
+}
+.t-ver{
+    font-size: 1vw;
+    margin-left: 1vw;
+}
+.name{
+    display: flex;
+    align-items: center;
+    margin-top: 2%;
+}
+.s-name{
+    width: 6vw;
+    margin-left: 19%;
+}
+.t-name{
+    font-size: 2vw;
+    margin-left: 4%
+}
+.s-verr{
+    width: 2vw;
+    margin-left: 7%;
+    margin-top: 5px;
+}
+.login{
+    display: flex;
+    align-items: center;
+    /* border: rgb(233, 0, 124); */
+    /* background-color: aqua; */
+    margin-left: 30%;
+    margin-top: 1vw;
+    width: 40%;
+    /* background-color: rgb(11, 136, 244); */
+    border-radius: 24px;
+    background-color: #312f2e;
+    border: 2px solid #d2caca;
+    box-sizing: border-box;
+    padding: 2%;
+    
+}
+.t-login{
+    font-size: 2vw;
+    margin-left: 20%;
+}
+*{
+    font-family: Ropa Sans;
+    color: aliceblue;
+}

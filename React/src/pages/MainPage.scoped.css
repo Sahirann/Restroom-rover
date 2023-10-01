@@ -173,6 +173,8 @@
 }
 
 .containermap{
+  width: 100vw;
+  height: 100vh;
   position: fixed;
   left: 0;
   z-index: -1;
@@ -181,4 +183,46 @@
   /* position: absolute; */
   left: 0;
   z-index: 10;
+}
+.PomP{
+  position: absolute;
+  width: 12vw ;
+  z-index: 10;
+  margin-left: 87vw;
+  margin-top: 75vh;
+}
+.leaflet-container {
+  height: 100vh;
+
+}
+
+.mapja{
+width: 100vw;
+height: 100vh;
+position: fixed;
+left: 0;
+z-index: -1;
+}
+
+/* .mapcon{
+position: relative;
+} */
+
+.navbarja{
+/* position: absolute; */
+left: 0;
+z-index: 10;
+}
+
+.containermap{
+width: 100vw;
+height: 100vh;
+position: fixed;
+left: 0;
+z-index: -1;
+}
+.review,.navbar{
+/* position: absolute; */
+left: 0;
+z-index: 10;
 }
