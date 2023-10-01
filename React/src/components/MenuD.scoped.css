@@ -1,5 +1,5 @@
 .background {
-    width: 27vw;
+    width: 25vw;
     height: 100vh;
     background-color: #312F2E;
     overflow: hidden;
@@ -18,12 +18,13 @@
 
 .logo {
     margin-top: 1vw;
-    width: 20vw;
+    width: 16vw;
+    margin-left: 4%;
 }
 
 .back {
-    margin-top: 2.75vw;
-    margin-left: 12%;
+    margin-top: 2vw;
+    margin-left: 17%;
     width: 3vw;
     height: 3vw;
     
@@ -39,26 +40,26 @@
     border: 1px solid #474545;
     /* Adjust the color and border properties as needed */
     margin: 10px;
-    margin-top: 55vh;
+    margin-top: 32vh;
 
 }
 
 .menu{
     /* background-color: blue; */
     width: 27vw;
-    height: 50vh;
-    /* z-index: -1; */
+    /* height: 20vh; */
+    z-index: -1;
     
 }
 .submenu{
     display: flex;
     align-items: center;
-    margin-top: 10%;
+    margin-top: 3%;
     
 }
 .s-pin{
     width: 4.5vw;
-    margin-left: 15%;
+    margin-left: 9.6%;
 }
 .t-pin{
     font-size: 1.75vw;
@@ -66,7 +67,7 @@
 }
 .s-con{
     width: 4vw;
-    margin-left: 15%;
+    margin-left: 10.2%;
 }
 .t-con{
     font-size: 1.75vw;
@@ -76,58 +77,70 @@
     display: flex;
     /* margin-top: 115%; */
     align-items: center;
+    margin-top: 0;
 }
 .s-ver{
     width: 3vw;
-    margin-left: 30%;
+    /* margin-left: 15%; */
 }
 .t-ver{
     font-size: 1vw;
-    margin-left: 1vw;
+    /*   */
 }
 .name{
     display: flex;
     align-items: center;
-    margin-top: 2%;
-    position: absolute;
-    left: 0;
-    bottom: 3%;
+    /* justify-content: center; */
+    /* margin-top: 2%; */
+    /* position: absolute; */
+    /* left: 0;
+    bottom: 3%; */
+    /* margin-top: 1%; */
+}
+.contain-name{
+    margin-left: 2%;
 }
 .s-name{
-    width: 6vw;
-    margin-left: 19%;
+    width: 7vw;
+    margin-left: 8%;
+    margin-top: 7%;
 }
 .t-name{
     font-size: 2vw;
-    margin-left: 4%
+    margin-left: 8%;
+    margin-bottom: 0;
+    
 }
 .s-verr{
-    width: 2vw;
-    margin-left: 7%;
-    margin-top: 5px;
+    width: 4vw;
+    margin-left: 6%;
+    margin-top: 3.2vh;
 }
 .login{
     display: flex;
     align-items: center;
     /* border: rgb(233, 0, 124); */
     /* background-color: aqua; */
-    margin-left: 30%;
+    margin-left: 35%;
     margin-top: 1vw;
-    width: 40%;
+    width: 37%;
     /* background-color: rgb(11, 136, 244); */
     border-radius: 24px;
     background-color: #312f2e;
     border: 2px solid #d2caca;
     box-sizing: border-box;
-    padding: 2%;
-    position: absolute;
+    
+    /* position: absolute;
     left: 0;
-    bottom: 3%; 
+    bottom: 3%;  */
     
 }
 .t-login{
-    font-size: 2vw;
-    margin-left: 20%;
+    font-size: 1.5vw;
+    margin-left: 25%;
+    margin-top: 15%;
+    margin-bottom: 15%;
+    margin-right: 10%;
     
     
 }
