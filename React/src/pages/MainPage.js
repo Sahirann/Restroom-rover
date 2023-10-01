@@ -30,6 +30,17 @@ const MainPage = () => {
   //   setMenuOpen(false);
   // }, []);
 
+  const markergreen = [
+    {
+      geocode: [13.820399, 100.515894],
+      popUp: "pop up 1"
+    },
+    {
+      geocode: [13.824872, 100.515559],
+      popUp: "pop up 1"
+    },
+
+  ]
   const markerred = [
     {
       geocode: [13.822469, 100.511893],
@@ -68,9 +79,13 @@ const MainPage = () => {
 
   const markericonred = new Icon({
     iconUrl: "/Pinred.png",
-    iconSize: [50, 50]
+    iconSize: [55, 56]
   })
 
+  const markericongreen = new Icon({
+    iconUrl: "/Pingreen.png",
+    iconSize: [45, 50]
+  })
   // const position = [51.505, -0.09]
   const [detail, setdetail] = useState([]);
   useEffect(() => {
@@ -121,7 +136,10 @@ const MainPage = () => {
             <Marker position={marker.geocode} icon={markericonred}></Marker>
           ))
           }
-
+          {markergreen.map(marker => (
+            <Marker position={marker.geocode} icon={markericongreen}></Marker>
+          ))
+          }
 
         </MapContainer>
       </div>

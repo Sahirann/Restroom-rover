@@ -79,7 +79,7 @@ function Navbar() {
                 <FaBars/>
             </button> */}
 
-                <Menu isOpen={isSidebarOpen} />
+                <Menu isOpen={isSidebarOpen} toggle={toggleSidebar} />
 
         </header>
         

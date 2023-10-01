@@ -4,7 +4,7 @@ import "./Menu.css";
 
 const Menu = (props) => {
 
-  const {isOpen} = props;
+  const {isOpen,toggle} = props;
   
   const Slidestyle = isOpen?"open":"close"
 
@@ -48,7 +48,7 @@ const Menu = (props) => {
         className="backIcon"
         alt=""
         src="/back.svg"
-        onClick={onBackIconClick}
+        onClick={toggle}
       />
       <div className="profile">
         <div className="profileChild" />
@@ -86,7 +86,7 @@ const Menu = (props) => {
         <div className="contractInner">
           <div className="contractInner">
             <img className="ellipseParent" alt="" src="/group-3.svg" />
-            <div className="contractSupport">Contract support</div>
+            <div className="contractSupport">Contact support</div>
           </div>
         </div>
         <img className="vectorIcon2" alt="" src="/vector5.svg" />
