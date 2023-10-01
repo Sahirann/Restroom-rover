@@ -1,5 +1,5 @@
 import React from "react";
-import { useState, useCallback ,useEffect} from "react";
+import { useState, useCallback, useEffect } from "react";
 import Menu from "../components/Menu";
 import PortalPopup from "../components/PortalPopup";
 import "./MainPage.scoped.css";
@@ -65,11 +65,11 @@ const MainPage = () => {
     },
     {
       geocode: [13.824774, 100.515854],
-      popUp: "pop up 1"
+      popUp: "pop up 2"
     },
     {
       geocode: [13.824072, 100.516106],
-      popUp: "pop up 1"
+      popUp: <Card/>
     }
 
   ]
@@ -102,7 +102,7 @@ const MainPage = () => {
   return (
     <div>
       {/* <Card></Card> */}
-      <MenuD></MenuD>
+      {/* <MenuD></MenuD> */}
       {/* <WReview></WReview> */}
       {/* <Review></Review> */}
       {/* <MenuD></MenuD> */}
@@ -127,7 +127,7 @@ const MainPage = () => {
         </MapContainer>
 
       </div> */}
-      
+
       <div className="containermap">
         <MapContainer center={[13.821813, 100.514062]} zoom={20}>
           <TileLayer
@@ -135,7 +135,11 @@ const MainPage = () => {
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           />
           {markers.map(marker => (
-            <Marker position={marker.geocode} icon={markericon}></Marker>
+            <Marker position={marker.geocode} icon={markericon}>
+              <Popup>
+                {marker.popUp}
+              </Popup>
+            </Marker>
           ))
           }
           {markerred.map(marker => (
@@ -149,7 +153,7 @@ const MainPage = () => {
 
         </MapContainer>
       </div>
-      
+
       <div className="navbar">
         <Navbar />
       </div>

@@ -8,7 +8,7 @@ import SearchIcon from '@mui/icons-material/Search';
 import DirectionsIcon from '@mui/icons-material/Directions';
 import { useRef } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
-import "./Navbar.css"
+import "./Navbar.scoped.css"
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import SearchBar from "./Searchbar";
@@ -40,7 +40,7 @@ function Navbar() {
                 <Paper
                     elevation={0}
                     component="form"
-                    sx={{ p: '2px 4px', display: 'flex', alignItems: 'center', width: 400 }}
+                    sx={{ p: '2px 5px', display: 'flex', alignItems: 'center', width: 400 }}
                 >
                     {/* <IconButton sx={{ p: '10px' }} aria-label="menu">
                         <MenuIcon />
@@ -79,8 +79,9 @@ function Navbar() {
             <button className="nav-btn" onClick={showNavbar}>
                 <FaBars/>
             </button> */}
-
-                <Menu isOpen={isSidebarOpen} toggle={toggleSidebar} />
+{/* 
+                <MenuD isOpen={isSidebarOpen} toggle={toggleSidebar} /> */}
+                <MenuD />
 
         </header>
         
