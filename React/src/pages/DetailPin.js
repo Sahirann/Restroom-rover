@@ -14,20 +14,20 @@ const DetailPin = (props) => {
   return (
     <div className="bg">
       <div className="left">
-        <img src="./icon menu.png" alt="" />
+        <img className="back" src="./icon menu.png" alt="" />
         <h1 className="name" >Name'place</h1>
-        <input className="in-name" type="text" />
+        <textarea className="in-name" type="text" />
         <h1 className="address" >Address</h1>
-        <input className="in-address" type="text"  />
+        <textarea className="in-address" type="text"  />
       </div>
       <div className="right">
         <h1 className="review">Review</h1>
-        <input className="in-review" type="text" />
-        <h1 className="rating">rating</h1>
+        <textarea className="in-review" type="text" />
+        <h1 className="rating">Rating</h1>
         <div className="star">
           <ReactStars count={5} edit={true} isHalf={true} size={30} activeColor="#D3C3AF" className="star" />
         </div>
-        <h1 className="uppic">upload picture</h1>
+        <h1 className="uppic">Upload picture</h1>
         <input className="in-pic" type="file" /><br />
         <button className="finish">Finish</button>
       </div>

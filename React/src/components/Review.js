@@ -36,7 +36,7 @@ const Review = (props) => {
           <div className="star">
             <ReactStars count={5} edit={false} value={data?.point ?? 3.5} isHalf={true} size={30} activeColor="#D3C3AF" className="star" />
           </div>
-          <p className="score">5</p>
+          <p className="score">3.5/5.0</p>
         </div>
         <button className="button-review">write review</button>
         <hr className="line" />
