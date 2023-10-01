@@ -1,6 +1,6 @@
 import { useCallback } from "react";
-import { useNavigate } from "react-router-dom";
-import "./Menu.css";
+import { useNavigate , Link} from "react-router-dom";
+import "./Menu.scoped.css";
 
 const Menu = (props) => {
 
@@ -55,11 +55,11 @@ const Menu = (props) => {
         <img className="personIcon" alt="" src="/person@2x.png" />
         <div className="user">User</div>
       </div>
-      <div className="login" onClick={onLoginContainerClick}>
+      <Link to="/login" className="login" onClick={onLoginContainerClick}>
         <div className="loginChild" />
         <div className="login1">Login</div>
         <img className="vectorIcon" alt="" src="/vector3.svg" />
-      </div>
+      </Link>
       <img className="menuItem" alt="" src="/line-2.svg" />
       <div className="pin" onClick={onPinContainerClick}>
         <div className="ellipseParent">
@@ -72,7 +72,7 @@ const Menu = (props) => {
         </div>
         <div className="pinRestroom">Pin Restroom</div>
       </div>
-      <div className="veri" onClick={onVeriContainerClick}>
+      <div to="Verify" className="veri" onClick={onVeriContainerClick}>
         <div className="groupParent">
           <div className="ellipseParent">
             <div className="groupChild" />
@@ -80,13 +80,15 @@ const Menu = (props) => {
           </div>
           <div className="verifyAccount">Verify Account</div>
         </div>
-        <img className="vectorIcon1" alt="" src="/vector4.svg" />
+        <img className="vectorIcon1" alt="" src="/Vaccount.svg" />
       </div>
       <div className="contract">
         <div className="contractInner">
           <div className="contractInner">
             <img className="ellipseParent" alt="" src="/group-3.svg" />
             <div className="contractSupport">Contact support</div>
+            <img className="ellipseParent" alt="" src="/bgicon.svg" />
+            <div className="contractSupport">Contract support</div>
           </div>
         </div>
         <img className="vectorIcon2" alt="" src="/vector5.svg" />

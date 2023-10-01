@@ -6,6 +6,7 @@ import "./MainPage.scoped.css";
 import Card from "../components/Card";
 import Review from "../components/Review";
 import WReview from "../components/wReview";
+import MenuD from "../components/MenuD";
 import "leaflet/dist/leaflet.css";
 import "./MainPage.css"
 import axios from "axios"
@@ -100,6 +101,11 @@ const MainPage = () => {
 
   return (
     <div>
+      {/* <Card></Card> */}
+      <MenuD></MenuD>
+      {/* <WReview></WReview> */}
+      {/* <Review></Review> */}
+      {/* <MenuD></MenuD> */}
       {/* <div className="navbarja">
         <Menu/>
         <React.Fragment>
@@ -147,7 +153,7 @@ const MainPage = () => {
       <div className="navbar">
         <Navbar />
       </div>
-      
+      <img className="PomP" src="PomP.png" alt="" />
 
       {/* {isMenuOpen && (
         <PortalPopup

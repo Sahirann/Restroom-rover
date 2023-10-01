@@ -2,18 +2,19 @@
   position: relative;
   width: 30vw;
   height: 100vh;
+  margin-right: 0;
+  padding-right: 0;
   padding-bottom: 0;
   background-color: #E6E6E6 ;
   overflow: scroll;
-  
-  display: flex;
+  /* display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: center; */
   
 }
 .top-header{
-  
+  margin-top: 0;
   top: 0;
   left: 0;
   background-color: #E8C69E;
@@ -25,13 +26,16 @@
 }
 .logo{
   width: 15vw;;
-  height: 20%;
+  /* height: 20%; */
+  top: 7px;
+  left: 5px;
 }
 .pic{
   width: 25vw;
   border-radius: 10px;
   display: block;
   margin: 110px auto 0;
+  margin-top: 20px;
 }
 .name{
   margin-top: 5px;
@@ -45,17 +49,20 @@
 }
 .container-score{
   display: flex;
-  align-items: center;
+  margin: 110px auto 0;
+  margin-top: 5%;
+
+
   
 }
 .star{
-  margin-left: 15px;
+  margin-left: 60px;
   margin-right: 0;
 }
 .score{
-  font-size: 4vw;
-  margin-top: 5px;
-  margin-left: 20px;
+  font-size: 3vw;
+  
+  margin-left: 50px;
 }
 .line {
   border: 1px solid #000; /* Adjust the color and border properties as needed */
@@ -69,6 +76,8 @@
   font-size: 2vw;
   background-color: grey;
   align-items: center;
+  border: 0;
+  border-radius: 10px;
 
 }
 .comment{
@@ -79,6 +88,3 @@
   font-family: Ropa Sans;
   color: #000;
 }
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
