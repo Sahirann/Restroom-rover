@@ -36,13 +36,19 @@ function MenuD(props) {
                     </Link>
                 </div>
                 <hr className="line2" />
-                <Link to="/verify" className="V-acc">
+                {/* <Link to="/verify" className="V-acc">
                     <img src="Vaccount.png" alt="" className="s-ver" />
                     <p className="t-ver">Verify account</p>
-                </Link>
+                </Link> */}
                 <div className="name">
                     <img src="formpic.png" alt="" className="s-name" />
-                    <p className="t-name">winza</p>
+                    <div className="contain-name">
+                        <p className="t-name">NongPza</p>
+                        <Link to="/verify" className="V-acc">
+                            <img src="Vaccount.png" alt="" className="s-ver" />
+                            <p className="t-ver">Verify account</p>
+                        </Link>
+                    </div>
                     <img src="Vaccount.png" alt="" className="s-verr" />
                 </div>
                 <Link to="/login" className="login">
