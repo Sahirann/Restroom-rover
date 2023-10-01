@@ -226,3 +226,34 @@ z-index: -1;
 left: 0;
 z-index: 10;
 }
+
+.mapja{
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  left: 0;
+  z-index: -1;
+}
+
+/* .mapcon{
+  position: relative;
+} */
+
+.navbarja{
+  /* position: absolute; */
+  left: 0;
+  z-index: 10;
+}
+
+.containermap{
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  left: 0;
+  z-index: -1;
+}
+.review,.navbar{
+  /* position: absolute; */
+  left: 0;
+  z-index: 10;
+}

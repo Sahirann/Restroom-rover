@@ -72,7 +72,8 @@ header {
 	/* justify-content: space-between; */
 	height: 75px;
 	padding: 0 2rem;
-	background-color: var(--mainColor);
+	/* background-color: var(--mainColor); */
+	background-color: #E8C69E;
 	color: var(--textColor);
 	gap: 25px;
 	position: relative;
