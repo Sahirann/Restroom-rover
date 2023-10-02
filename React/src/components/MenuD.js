@@ -13,16 +13,18 @@ const Win = () => {
 }
 function MenuD(props) {
 
-    const { isOpen, toggle } = props;
-
-    const Slidestyle = isOpen ? "open" : "close"
+    const {isOpen,toggle} = props;
+  
+    const Slidestyle = isOpen?"open":"close"
 
     return (
 
             <div className={`background ${Slidestyle}`}>
                 <div className="container-top" >
                     <img src="logomenu.png" alt="" className="logo" />
-                    <img src="back.png" alt="" className="back" onClick={toggle} />
+
+                        <img src="back.png" alt="" className="back" onClick={toggle} />
+
                 </div>
                 <hr className="line" />
                 <div className="menu">
