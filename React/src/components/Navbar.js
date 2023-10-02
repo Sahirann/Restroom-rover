@@ -12,15 +12,10 @@ import "./Navbar.scoped.css"
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import SearchBar from "./Searchbar";
-import Menu from "./Menu";
+import Review from "./Review"
 import MenuD from "./MenuD";
 
 function Navbar() {
-    // const navRef = useRef();
-
-    // const showNavbar = () => {
-    //     navRef.current.classList.toggle("responsive_nav");
-    // }
 
     const [isSidebarOpen, setSidebarOpen] = useState(false);
 
@@ -42,9 +37,7 @@ function Navbar() {
                     component="form"
                     sx={{ p: '2px 5px', display: 'flex', alignItems: 'center', width: 400 }}
                 >
-                    {/* <IconButton sx={{ p: '10px' }} aria-label="menu">
-                        <MenuIcon />
-                    </IconButton> */}
+
                     <InputBase
                         sx={{ ml: 1, flex: 1 }}
                         placeholder="Search..."
@@ -55,33 +48,10 @@ function Navbar() {
                     </IconButton>
 
                 </Paper>
-                {/* <div className="search-bar-container">
-                    <div>
-                    <input
-                        className="search-input"
-                        type="text"
-                        placeholder="Where are you..."
-                        
-                    />
-                    <SearchIcon className="searchicon"/>
-                    </div>
-                    
-                </div> */}
-
             </div>
-            {/* <nav ref={navRef}>
-                <a href="/#">Home</a>
-                <a href="/#">My </a>
-                <button className="nav-btn nav-close-btn" onClick={showNavbar}>
-                    <FaTimes/>
-                </button>
-            </nav>
-            <button className="nav-btn" onClick={showNavbar}>
-                <FaBars/>
-            </button> */}
-{/* 
-                <MenuD isOpen={isSidebarOpen} toggle={toggleSidebar} /> */}
-                <MenuD />
+            {/* <MenuD isOpen={isSidebarOpen} toggle={toggleSidebar} /> */}
+            <Review/>
+                
 
         </header>
         

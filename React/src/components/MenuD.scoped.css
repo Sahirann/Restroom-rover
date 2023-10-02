@@ -9,7 +9,12 @@
     top: 0;
     transition: all 0.5s;
 }
-
+.open{
+    width: 460px;
+}
+.close{
+    width: 0px;
+}
   
 .container-top {
     display: flex;
