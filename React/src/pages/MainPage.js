@@ -63,7 +63,7 @@ const MainPage = () => {
     },
     {
       geocode: [13.824072, 100.516106],
-      popUp: <Card/>
+      popUp: <Card />
     }
 
   ]
@@ -123,7 +123,6 @@ const MainPage = () => {
             <Marker position={marker.geocode} icon={markericongreen}></Marker>
           ))
           }
-          
           {location.loaded && !location.error && (
             <Marker icon={markericonuser} position={[location.coordinates.lat, location.coordinates.lng]}>
             </Marker>
