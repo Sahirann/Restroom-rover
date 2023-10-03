@@ -10,7 +10,7 @@
     transition: all 0.5s;
 }
 .open{
-    width: 460px;
+    width: 25vw;
 }
 .close{
     width: 0px;

@@ -32,7 +32,7 @@ const Review = (props) => {
         </div>
         <button className="button-review" onClick={openWreview}>write review</button>
         <div className="WReview">
-          <WReview status ={Wreview} />
+          <WReview status ={Wreview} close={setWreview} />
         </div>
         <hr className="line" />
         

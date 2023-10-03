@@ -101,33 +101,7 @@ const MainPage = () => {
 
   return (
     <div>
-      {/* <Card></Card> */}
-      {/* <MenuD></MenuD> */}
-      {/* <WReview></WReview> */}
-      {/* <Review></Review> */}
-      {/* <MenuD></MenuD> */}
-      {/* <div className="navbarja">
-        <Menu/>
-        <React.Fragment>
-          <Navbar/>
-        </React.Fragment>
-      </div>
-      <div className="mapja">
-        <MapContainer center={[13.821813, 100.514062]} zoom={20}>
-          <TileLayer
-            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-          />
-          {markers.map(marker => (
-            <Marker position={marker.geocode} icon={markericon}>
-
-            </Marker>
-          ))
-          }
-        </MapContainer>
-
-      </div> */}
-
+      
       <div className="containermap">
         <MapContainer center={[13.821813, 100.514062]} zoom={20}>
           <TileLayer
@@ -151,11 +125,8 @@ const MainPage = () => {
           ))
           }
           
-          {location.loaded && !location.error(
-              <Marker icon={markericonuser} position={[location.coordinates.lat, location.coordinates.lng]}>
-
-              </Marker>
-          )}
+          {location.loaded && !location.error && (     
+          <Marker icon={markericonuser} position={[location.coordinates.lat, location.coordinates.lng]}>     </Marker> )}
 
 
         </MapContainer>
