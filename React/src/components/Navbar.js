@@ -49,8 +49,8 @@ function Navbar() {
 
                 </Paper>
             </div>
-            {/* <MenuD isOpen={isSidebarOpen} toggle={toggleSidebar} /> */}
-            <Review/>
+            <MenuD isOpen={isSidebarOpen} toggle={toggleSidebar} />
+
                 
 
         </header>
