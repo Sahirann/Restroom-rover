@@ -2,9 +2,10 @@ import styles from "./wReview.scoped.css";
 import React from "react";
 import ReactStars from "react-rating-stars-component";
 const WReview = (props) => {
-  const {data} = props
-  return (
-    <div className="background">
+  const {status} = props
+  return (                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
+    <div className="background" style={ status ? {width:"40vw"} : {width:"0"}} >
+      <button className="getback">X</button>
       <div className="container-info">
         <img src="/krit.svg" alt="" className="pic-pro" />
         <div className="container-name">

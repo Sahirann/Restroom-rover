@@ -41,9 +41,10 @@
   margin-top: 20px;
 }
 .name{
-  margin-top: 5px;
+  margin-top: 2vh;
   margin-left: 6%;
   font-size: 3vw;
+  margin-bottom: 0;
 }
 .address{
   font-size: 1.5vw;
@@ -53,17 +54,19 @@
 .container-score{
   display: flex;
   margin: 110px auto 0;
-  margin-top: 5%;
+  margin-top: 0;
+  align-items: center;
+  justify-content: center;
 
 
   
 }
 .star{
-  margin-left: 60px;
+  /* margin-left: 1vw; */
   margin-right: 0;
 }
 .score{
-  font-size: 3vw;
+  font-size: 2.75vw;
   
   margin-left: 50px;
 }
@@ -75,7 +78,7 @@
   display: block;
   margin: 110px auto 0;
   width: 50%;
-  margin-top: 20px;
+  margin-top: 0;
   font-size: 2vw;
   background-color: grey;
   align-items: center;
@@ -86,6 +89,14 @@
 .comment{
   display: block;
   margin: 110px auto 0;
+}
+.WReview{
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  left: 44%;
+  top: 26%;
 }
 *{
   font-family: Ropa Sans;
