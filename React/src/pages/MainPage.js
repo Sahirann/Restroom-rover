@@ -16,20 +16,14 @@ import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet'
 import MenuIcon from '@mui/icons-material/Menu';
 import Navbar from "../components/Navbar";
 import SearchBar from "../components/Searchbar";
+import UseGeoLocation from "../components/useGegoLocation";
 ///
 
 
 
 const MainPage = () => {
-  // const [isMenuOpen, setMenuOpen] = useState(false);
 
-  // const openMenu = useCallback(() => {
-  //   setMenuOpen(true);
-  // }, []);
-
-  // const closeMenu = useCallback(() => {
-  //   setMenuOpen(false);
-  // }, []);
+  const location = UseGeoLocation();
 
   const markergreen = [
     {
@@ -87,6 +81,12 @@ const MainPage = () => {
     iconUrl: "/Pingreen.png",
     iconSize: [45, 50]
   })
+
+  const markericonuser = new Icon({
+    iconUrl: "/Userlocation.png",
+    iconSize: [45, 50]
+  })
+
   // const position = [51.505, -0.09]
   const [detail, setdetail] = useState([]);
   useEffect(() => {
@@ -150,6 +150,13 @@ const MainPage = () => {
             <Marker position={marker.geocode} icon={markericongreen}></Marker>
           ))
           }
+          
+          {location.loaded && !location.error(
+              <Marker icon={markericonuser} position={[location.coordinates.lat, location.coordinates.lng]}>
+
+              </Marker>
+          )}
+
 
         </MapContainer>
       </div>
@@ -159,15 +166,6 @@ const MainPage = () => {
       </div>
       <img className="PomP" src="PomP.png" alt="" />
 
-      {/* {isMenuOpen && (
-        <PortalPopup
-          overlayColor="rgba(113, 113, 113, 0.3)"
-          placement="Centered"
-          onOutsideClick={closeMenu}
-        >
-          <Menu onClose={closeMenu} />
-        </PortalPopup>
-      )} */}
     </div>
   );
 };
