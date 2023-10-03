@@ -5,23 +5,15 @@ import ReactStars from "react-rating-stars-component";
 import PortalPopup from "../components/PortalPopup";
 import styles from "./Review.scoped.css";
 import Comment from "./Comment";
+import WReview from "./wReview";
 const Review = (props) => {
-  const [isFrameOpen, setFrameOpen] = useState(false);
+  
   const  {data}  = props
-  const openFrame = useCallback(() => {
-    setFrameOpen(true);
-  }, []);
-
-  const closeFrame = useCallback(() => {
-    setFrameOpen(false);
-  }, []);
-
-  const onBackIconClick = useCallback(() => {
-    // Please sync "MacBook Air - 1" to the project
-  }, []);
+  const [Wreview,setWreview] = useState(false);
+  const openWreview = () => setWreview(!Wreview)
 
   return (
-    
+      
       <div className="block">
         <div className="top-header">
           <div container-head>
@@ -38,7 +30,10 @@ const Review = (props) => {
           </div>
           <p className="score">3.5/5.0</p>
         </div>
-        <button className="button-review">write review</button>
+        <button className="button-review" onClick={openWreview}>write review</button>
+        <div className="WReview">
+          <WReview status ={Wreview} close={setWreview} />
+        </div>
         <hr className="line" />
         
         <Comment className="comment"></Comment>
@@ -54,7 +49,7 @@ const Review = (props) => {
         <Comment className="comment"></Comment>
         
       </div>
-    
+      
   );
 };
 

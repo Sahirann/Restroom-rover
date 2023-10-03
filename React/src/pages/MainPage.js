@@ -123,8 +123,6 @@ const MainPage = () => {
             <Marker position={marker.geocode} icon={markericongreen}></Marker>
           ))
           }
-
-
           {location.loaded && !location.error && (
             <Marker icon={markericonuser} position={[location.coordinates.lat, location.coordinates.lng]}>
             </Marker>

@@ -4,8 +4,26 @@
   background-color: #D9D9D9;
   border-radius: 10%;
   border-top: 0 ;
+  overflow: hidden;
+}
+.getback{
+  position: relative;
+  font-size: 2.5vw;
+  /* margin-left: 4%; */
+  top: 50%;
+  /* margin-top: 5%; */
+  padding: 0;
+  left: 2%;
+  background-color: #D9D9D9;
+  border: 0;
   
 }
+.getback:active{
+  background-color: gray;
+  color: white;
+}
+
+
 .container-info{
   display: flex;
   margin-left: 5%;
