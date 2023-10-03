@@ -126,7 +126,9 @@ const MainPage = () => {
           }
           
           {location.loaded && !location.error && (     
-          <Marker icon={markericonuser} position={[location.coordinates.lat, location.coordinates.lng]}>     </Marker> )}
+          <Marker icon={markericonuser} position={[location.coordinates.lat, location.coordinates.lng]}>
+          </Marker> 
+        )}
 
 
         </MapContainer>
