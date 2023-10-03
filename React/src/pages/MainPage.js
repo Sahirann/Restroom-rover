@@ -101,7 +101,6 @@ const MainPage = () => {
 
   return (
     <div>
-      
       <div className="containermap">
         <MapContainer center={[13.821813, 100.514062]} zoom={20}>
           <TileLayer
@@ -125,10 +124,10 @@ const MainPage = () => {
           ))
           }
           
-          {location.loaded && !location.error && (     
-          <Marker icon={markericonuser} position={[location.coordinates.lat, location.coordinates.lng]}>
-          </Marker> 
-        )}
+          {location.loaded && !location.error && (
+            <Marker icon={markericonuser} position={[location.coordinates.lat, location.coordinates.lng]}>
+            </Marker>
+          )}
 
 
         </MapContainer>
