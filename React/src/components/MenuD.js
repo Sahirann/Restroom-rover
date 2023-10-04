@@ -54,7 +54,7 @@ function MenuD(props) {
                     <img src="Vaccount.png" alt="" className="s-verr" />
                 </div>
                 <Link to="/login" className="login">
-                    <img src="login.svg" alt="" />
+                    <img className="pic-login" src="login.svg" alt="" />
                     <p className="t-login">Login</p>
                 </Link>
 

@@ -10,7 +10,7 @@
     transition: all 0.5s;
 }
 .open{
-    width: 460px;
+    width: 25vw;
 }
 .close{
     width: 0px;
@@ -60,6 +60,7 @@
     display: flex;
     align-items: center;
     margin-top: 3%;
+    text-decoration: none;
     
 }
 .s-pin{
@@ -69,6 +70,7 @@
 .t-pin{
     font-size: 1.75vw;
     margin-left: 2vw;
+    text-decoration: none;
 }
 .s-con{
     width: 4vw;
@@ -83,6 +85,7 @@
     /* margin-top: 115%; */
     align-items: center;
     margin-top: 0;
+    text-decoration: none;
 }
 .s-ver{
     width: 3vw;
@@ -134,15 +137,19 @@
     background-color: #312f2e;
     border: 2px solid #d2caca;
     box-sizing: border-box;
+    text-decoration: none;
     
     /* position: absolute;
     left: 0;
     bottom: 3%;  */
     
 }
+.pic-login{
+    margin-left: 7%;
+}
 .t-login{
     font-size: 1.5vw;
-    margin-left: 25%;
+    margin-left: 20%;
     margin-top: 15%;
     margin-bottom: 15%;
     margin-right: 10%;

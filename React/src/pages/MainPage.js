@@ -145,6 +145,7 @@ const MainPage = () => {
           ))
           }
 
+
           {/* {userLocation && (
             <Marker position={userLocation} icon={markericongreen}>
               <Popup>Your Location</Popup>
@@ -154,6 +155,10 @@ const MainPage = () => {
 
           {location.loaded && !location.error &&  (
             <Marker position={[location.coordinates.lat, location.coordinates.lng] }  icon={markericongreen}>
+
+          {location.loaded && !location.error && (
+            <Marker icon={markericonuser} position={[location.coordinates.lat, location.coordinates.lng]}>
+
             </Marker>
           )}
 
