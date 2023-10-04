@@ -26,6 +26,13 @@ import L from 'leaflet';
 
 const MainPage = () => {
 
+  const [isReview, setisReview] = useState(false);
+
+    const toggleReview = () => {
+        setisReview(!isReview);
+      console.log(isReview)
+    };
+
   const [userLocation, setUserLocation] = useState(null);
 
   useEffect(() => {
@@ -84,7 +91,7 @@ const MainPage = () => {
     },
     {
       geocode: [13.824072, 100.516106],
-      popUp: <Card />
+      popUp: <Card toggle={toggleReview}/>
     }
 
   ]
@@ -153,8 +160,8 @@ const MainPage = () => {
           )} */}
 
 
-          {location.loaded && !location.error &&  (
-            <Marker position={[location.coordinates.lat, location.coordinates.lng] }  icon={markericongreen}>
+          {/* {location.loaded && !location.error &&  (
+            <Marker position={[location.coordinates.lat, location.coordinates.lng] }  icon={markericongreen}> */}
 
           {location.loaded && !location.error && (
             <Marker icon={markericonuser} position={[location.coordinates.lat, location.coordinates.lng]}>
@@ -170,7 +177,7 @@ const MainPage = () => {
         <Navbar />
       </div>
       <img className="PomP" src="PomP.png" alt="" />
-
+      <Review isOpen={isReview} toggle={toggleReview}/>
     </div>
   );
 };

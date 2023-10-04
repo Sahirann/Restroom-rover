@@ -10,6 +10,7 @@
   left: 0;
   bottom: 0;
   z-index: 99;
+  transition: all 0.5s;
   /* display: flex;
   
   
@@ -103,4 +104,10 @@
 *{
   font-family: Ropa Sans;
   color: #000;
+}
+.open{
+  width: 25vw;
+}
+.close{
+  width: 0px;
 }

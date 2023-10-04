@@ -17,6 +17,8 @@ import MenuD from "./MenuD";
 
 function Navbar() {
 
+    
+
     const [isSidebarOpen, setSidebarOpen] = useState(false);
 
     const toggleSidebar = () => {
@@ -24,9 +26,10 @@ function Navbar() {
   
     };
 
+
+
     return (
         <header>
-            <Review></Review>
             <h3>
                 <button className="nav-btn" onClick={toggleSidebar} >
                     <FaBars />
@@ -51,9 +54,6 @@ function Navbar() {
                 </Paper>
             </div>
             <MenuD isOpen={isSidebarOpen} toggle={toggleSidebar} />
-
-                
-
         </header>
         
     );
