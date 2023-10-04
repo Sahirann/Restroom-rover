@@ -17,11 +17,29 @@ import MenuIcon from '@mui/icons-material/Menu';
 import Navbar from "../components/Navbar";
 import SearchBar from "../components/Searchbar";
 import UseGeoLocation from "../components/useGegoLocation";
-///
+
+
+import L from 'leaflet';
+
 
 
 
 const MainPage = () => {
+
+  const [userLocation, setUserLocation] = useState(null);
+
+  useEffect(() => {
+    // Get user's location using the Geolocation API
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        const { latitude, longitude } = position.coords;
+        setUserLocation([latitude, longitude]);
+      },
+      (error) => {
+        console.error("Error getting user location:", error);
+      }
+    );
+  }, []);
 
   const location = UseGeoLocation();
 
@@ -34,7 +52,10 @@ const MainPage = () => {
       geocode: [13.824872, 100.515559],
       popUp: "pop up 1"
     },
-
+    // {
+    //   geocode: (userLocation),
+    //   popUp: "pop up 1"
+    // },
   ]
   const markerred = [
     {
@@ -87,7 +108,7 @@ const MainPage = () => {
     iconSize: [45, 50]
   })
 
-  // const position = [51.505, -0.09]
+
   const [detail, setdetail] = useState([]);
   useEffect(() => {
     axios.get("http://localhost:3001/").then((response) => {
@@ -123,8 +144,21 @@ const MainPage = () => {
             <Marker position={marker.geocode} icon={markericongreen}></Marker>
           ))
           }
+
+
+          {/* {userLocation && (
+            <Marker position={userLocation} icon={markericongreen}>
+              <Popup>Your Location</Popup>
+            </Marker>
+          )} */}
+
+
+          {location.loaded && !location.error &&  (
+            <Marker position={[location.coordinates.lat, location.coordinates.lng] }  icon={markericongreen}>
+
           {location.loaded && !location.error && (
             <Marker icon={markericonuser} position={[location.coordinates.lat, location.coordinates.lng]}>
+
             </Marker>
           )}
 
