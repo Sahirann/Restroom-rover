@@ -28,7 +28,7 @@ function MenuD(props) {
                 </div>
                 <hr className="line" />
                 <div className="menu">
-                    <Link to="/pin_restroom" className="submenu">
+                    <Link to="/Detail-pin" className="submenu">
                         <img src="Prestroom.png" alt="" className="s-pin" />
                         <p className="t-pin">Pin restroom</p>
                     </Link>

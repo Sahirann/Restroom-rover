@@ -10,6 +10,7 @@ import Verify from "./pages/Verify";
 import DetailPin from "./pages/DetailPin";
 import MainPage from "./pages/MainPage";
 import Ticket from "./pages/Ticketpage";
+import Admin from "./pages/Admin";
 import { useEffect } from "react";
 import { Autosave, useAutosave } from 'react-autosave';
 
@@ -60,6 +61,7 @@ function App() {
       <Route path="/Verify" element={<Verify />} />
       <Route path="/Detail-pin" element={<DetailPin />} />
       <Route path="/Ticket" element={<Ticket />} />
+      <Route path="/admin" element={<Admin />} />
     </Routes>
   );
 }

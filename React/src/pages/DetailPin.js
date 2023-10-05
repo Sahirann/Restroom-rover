@@ -14,14 +14,16 @@ const DetailPin = (props) => {
   return (
     <div className="bg">
       <div className="left">
+        <Link to="/">
         <img className="back" src="./icon menu.png" alt="" />
+        </Link>
         <h1 className="name" >Name'place</h1>
         <textarea className="in-name" type="text" />
         <h1 className="address" >Address</h1>
         <textarea className="in-address" type="text"  />
       </div>
       <div className="right">
-        <h1 className="review">Review</h1>
+        <h1 className="review">Information</h1>
         <textarea className="in-review" type="text" />
         <h1 className="rating">Rating</h1>
         <div className="star">
