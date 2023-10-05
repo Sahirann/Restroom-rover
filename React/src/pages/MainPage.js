@@ -17,14 +17,27 @@ import MenuIcon from '@mui/icons-material/Menu';
 import Navbar from "../components/Navbar";
 import SearchBar from "../components/Searchbar";
 import UseGeoLocation from "../components/useGegoLocation";
-
-
+import { supabase } from "../supabaseClient";
 import L from 'leaflet';
 
 
 
 
 const MainPage = () => {
+  const [infoCard,setinfoCard] = useState([])
+  console.log(infoCard)
+  useEffect(()=>{
+    fetchinfoCard()
+  },[])
+  async function fetchinfoCard(){
+    const {data} = await supabase
+      .from('infoCard')
+      .select('*')
+      setinfoCard(data)
+  }
+  const info = infoCard.map((data, index) => {
+    return <Card key={index} data={data} ></Card>
+  })
 
   const [userLocation, setUserLocation] = useState(null);
 
@@ -122,6 +135,7 @@ const MainPage = () => {
 
   return (
     <div>
+      {/* {infoCard} */}
       <div className="containermap">
         <MapContainer center={[13.821813, 100.514062]} zoom={20}>
           <TileLayer
@@ -144,24 +158,7 @@ const MainPage = () => {
             <Marker position={marker.geocode} icon={markericongreen}></Marker>
           ))
           }
-
-
-          {/* {userLocation && (
-            <Marker position={userLocation} icon={markericongreen}>
-              <Popup>Your Location</Popup>
-            </Marker>
-          )} */}
-
-
-          {location.loaded && !location.error &&  (
-            <Marker position={[location.coordinates.lat, location.coordinates.lng] }  icon={markericongreen}>
-
-          {location.loaded && !location.error && (
-            <Marker icon={markericonuser} position={[location.coordinates.lat, location.coordinates.lng]}>
-
-            </Marker>
-          )}
-
+      
 
         </MapContainer>
       </div>
