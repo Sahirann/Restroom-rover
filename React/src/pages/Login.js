@@ -33,7 +33,7 @@ const Login = () => {
   }
 
   return (
-
+    
     <div className="bg">
       <div className="bg-small" >
         <div className="bg-img">

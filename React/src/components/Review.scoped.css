@@ -32,15 +32,19 @@
 
 }
 .logo{
+  position: relative;
   width: 15vw;;
   height: 20%;
-  top: 7px;
-  left: 5px;
+  bottom: 0.5vh;
+  left: 1vw;
+  
 }
 .backbutton{
-  width: 15%;;
+  position: relative;
+  width: 15%;
   margin-top: 2vw;
-  margin-left: 5vw;
+  left: 10.5vw;
+  bottom: 1.5vh;
 }
 
 .pic{
