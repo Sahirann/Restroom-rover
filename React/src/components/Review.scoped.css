@@ -10,6 +10,7 @@
   left: 0;
   bottom: 0;
   z-index: 99;
+  transition: all 0.5s;
   /* display: flex;
   
   
@@ -28,13 +29,20 @@
   z-index: 10;
   display: flex;
   align-items: center;
+
 }
 .logo{
   width: 15vw;;
-  /* height: 20%; */
+  height: 20%;
   top: 7px;
   left: 5px;
 }
+.backbutton{
+  width: 15%;;
+  margin-top: 2vw;
+  margin-left: 5vw;
+}
+
 .pic{
   width: 25vw;
   border-radius: 10px;
@@ -103,4 +111,10 @@
 *{
   font-family: Ropa Sans;
   color: #000;
+}
+.open{
+  width: 31vw;
+}
+.close{
+  width: 0px;
 }

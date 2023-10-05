@@ -39,6 +39,13 @@ const MainPage = () => {
     return <Card key={index} data={data} ></Card>
   })
 
+  const [isReview, setisReview] = useState(false);
+
+    const toggleReview = () => {
+        setisReview(!isReview);
+      console.log(isReview)
+    };
+
   const [userLocation, setUserLocation] = useState(null);
 
   useEffect(() => {
@@ -97,7 +104,7 @@ const MainPage = () => {
     },
     {
       geocode: [13.824072, 100.516106],
-      popUp: <Card />
+      popUp: <Card toggle={toggleReview}/>
     }
 
   ]
@@ -158,7 +165,24 @@ const MainPage = () => {
             <Marker position={marker.geocode} icon={markericongreen}></Marker>
           ))
           }
-      
+
+
+
+          {/* {userLocation && (
+            <Marker position={userLocation} icon={markericongreen}>
+              <Popup>Your Location</Popup>
+            </Marker>
+          )} */}
+
+
+          {/* {location.loaded && !location.error &&  (
+            <Marker position={[location.coordinates.lat, location.coordinates.lng] }  icon={markericongreen}> */}
+
+          {location.loaded && !location.error && (
+            <Marker icon={markericonuser} position={[location.coordinates.lat, location.coordinates.lng]}>
+
+            </Marker>
+          )}
 
         </MapContainer>
       </div>
@@ -167,7 +191,7 @@ const MainPage = () => {
         <Navbar />
       </div>
       <img className="PomP" src="PomP.png" alt="" />
-
+      <Review isOpen={isReview} toggle={toggleReview}/>
     </div>
   );
 };
