@@ -19,32 +19,38 @@ import SearchBar from "../components/Searchbar";
 import UseGeoLocation from "../components/useGegoLocation";
 import { supabase } from "../supabaseClient";
 import L from 'leaflet';
+import DetailPin from "./DetailPin";
 
 
 
 
 const MainPage = () => {
-  const [infoCard,setinfoCard] = useState([])
-  console.log(infoCard)
-  useEffect(()=>{
-    fetchinfoCard()
-  },[])
-  async function fetchinfoCard(){
-    const {data} = await supabase
-      .from('infoCard')
-      .select('*')
-      setinfoCard(data)
-  }
-  const info = infoCard.map((data, index) => {
-    return <Card key={index} data={data} ></Card>
-  })
+
+
+
+
+  // const [infoCard,setinfoCard] = useState([])
+  // console.log(infoCard)
+  // useEffect(()=>{
+  //   fetchinfoCard()
+  // },[])
+  // async function fetchinfoCard(){
+  //   const {data} = await supabase
+  //     .from('infoCard')
+  //     .select('*')
+  //     setinfoCard(data)
+  // }
+  // const info = infoCard.map((data, index) => {
+  //   return <Card key={index} data={data} ></Card>
+  // })
 
   const [isReview, setisReview] = useState(false);
-
-    const toggleReview = () => {
-        setisReview(!isReview);
-      console.log(isReview)
-    };
+  const [reviewData,setreviewData] = useState({});
+  const toggleReview = (win) => {
+    setisReview(!isReview);
+    setreviewData(win)
+    console.log(isReview)
+  };
 
   const [userLocation, setUserLocation] = useState(null);
 
@@ -104,7 +110,7 @@ const MainPage = () => {
     },
     {
       geocode: [13.824072, 100.516106],
-      popUp: <Card toggle={toggleReview}/>
+      popUp: <Card toggle={toggleReview} />
     }
 
   ]
@@ -129,27 +135,40 @@ const MainPage = () => {
   })
 
 
-  const [detail, setdetail] = useState([]);
+  const [pin, setpin] = useState([]);
   useEffect(() => {
     axios.get("http://localhost:3001/").then((response) => {
-      setdetail(response.data);
+      setpin(response.data);
       console.log("update");
     }).catch((err) => { console.log(err) });
   }, []);
-  const detailcard = detail.map((data, index) => {
-    return <Card key={index} data={data} ></Card>
+  const pincard = pin.map((data, index) => {
+    const markericon = new Icon({
+      iconUrl: data.type.pic,
+      iconSize: [data.type.width,data.type.height]
+    })
+    return <Marker key={index} position={[data.lat,data.lng]} icon={markericon}>
+            <Popup>
+              <Card data={data.infoCard[0]} toggle={()=>toggleReview(data.infoCard[0])} ></Card>
+            </Popup>
+            </Marker>
   })
+  
+
 
   return (
     <div>
+      {/* {detailcard} */}
       {/* {infoCard} */}
+
       <div className="containermap">
         <MapContainer center={[13.821813, 100.514062]} zoom={20}>
           <TileLayer
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           />
-          {markers.map(marker => (
+          {pincard}
+          {/* {markers.map(marker => (
             <Marker position={marker.geocode} icon={markericon}>
               <Popup>
                 {marker.popUp}
@@ -164,25 +183,13 @@ const MainPage = () => {
           {markergreen.map(marker => (
             <Marker position={marker.geocode} icon={markericongreen}></Marker>
           ))
-          }
+          } */}
 
-
-
-          {/* {userLocation && (
-            <Marker position={userLocation} icon={markericongreen}>
-              <Popup>Your Location</Popup>
-            </Marker>
-          )} */}
-
-
-          {/* {location.loaded && !location.error &&  (
-            <Marker position={[location.coordinates.lat, location.coordinates.lng] }  icon={markericongreen}> */}
-
-          {location.loaded && !location.error && (
+          {/* {location.loaded && !location.error && (
             <Marker icon={markericonuser} position={[location.coordinates.lat, location.coordinates.lng]}>
 
             </Marker>
-          )}
+          )} */}
 
         </MapContainer>
       </div>
@@ -191,7 +198,8 @@ const MainPage = () => {
         <Navbar />
       </div>
       <img className="PomP" src="PomP.png" alt="" />
-      <Review isOpen={isReview} toggle={toggleReview}/>
+      
+      <Review data={reviewData} isOpen={isReview} toggle={()=>toggleReview(reviewData)} />
     </div>
   );
 };

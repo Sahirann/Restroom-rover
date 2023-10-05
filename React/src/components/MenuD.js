@@ -1,7 +1,8 @@
-import { useCallback } from "react";
+import { useCallback, useContext } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import "./MenuD.scoped.css";
-
+import { AuthContext } from "../App";
+import { supabase } from "../supabaseClient";
 const Win = () => {
     if (false) {
         return (<div>winza</div>)
@@ -12,10 +13,16 @@ const Win = () => {
 
 }
 function MenuD(props) {
-
+    const {token,setToken} = useContext(AuthContext);
     const {isOpen,toggle} = props;
   
     const Slidestyle = isOpen?"open":"close"
+
+
+    async function handleLogout(){
+        // localStorage.removeItem('token')
+        const { error } = await supabase.auth.signOut()
+    }
 
     return (
 
@@ -45,7 +52,7 @@ function MenuD(props) {
                 <div className="name">
                     <img src="formpic.png" alt="" className="s-name" />
                     <div className="contain-name">
-                        <p className="t-name">NongPza</p>
+                        <p className="t-name">{token?.user?.user_metadata?.Username??"Guess" }</p>
                         <Link to="/verify" className="V-acc">
                             <img src="Vaccount.png" alt="" className="s-ver" />
                             <p className="t-ver">Verify account</p>
@@ -57,7 +64,7 @@ function MenuD(props) {
                     <img className="pic-login" src="login.svg" alt="" />
                     <p className="t-login">Login</p>
                 </Link>
-
+                <button onClick={handleLogout}>Log out</button>
             </div>
 
     )

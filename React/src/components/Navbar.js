@@ -30,6 +30,7 @@ function Navbar() {
 
     return (
         <header>
+            
             <h3>
                 <button className="nav-btn" onClick={toggleSidebar} >
                     <FaBars />
@@ -53,7 +54,7 @@ function Navbar() {
 
                 </Paper>
             </div>
-            <MenuD isOpen={isSidebarOpen} toggle={toggleSidebar} />
+            <MenuD  isOpen={isSidebarOpen} toggle={toggleSidebar} />
         </header>
         
     );

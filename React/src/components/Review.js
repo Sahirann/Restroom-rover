@@ -23,15 +23,15 @@ const Review = (props) => {
             <img src="back.png" className="backbutton" onClick={toggle}/>
           </div>
         </div>
-        <img src="/Bally.png" alt="" className="pic" />
-        <h1 className="name">The life</h1>
-        <p className="address">294/111</p>
+        <img src={data?.picture ?? "https://clicxy.com/wp-content/uploads/2016/04/dummy-post-horisontal.jpg"} alt="" className="pic" />
+        <h1 className="name">{data?.name ?? "Name"}</h1>
+        <p className="address">{data?.address ?? "address"}</p>
         <hr className="line" />
         <div className="container-score">
           <div className="star">
             <ReactStars count={5} edit={false} value={data?.point ?? 3.5} isHalf={true} size={30} activeColor="#D3C3AF" className="star" />
           </div>
-          <p className="score">3.5/5.0</p>
+          <p className="score">{data?.point?.toFixed(1) ?? "point"}</p>
         </div>
         <button className="button-review" onClick={openWreview}>write review</button>
         <div className="WReview">
