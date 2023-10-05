@@ -8,16 +8,19 @@ import Comment from "./Comment";
 import WReview from "./wReview";
 const Review = (props) => {
   
-  const  {data}  = props
+
+  const  {data,isOpen,toggle}  = props
+  const Slidestyle = isOpen?"open":"close"
   const [Wreview,setWreview] = useState(false);
   const openWreview = () => setWreview(!Wreview)
 
   return (
       
-      <div className="block">
+      <div className={`block ${Slidestyle}`}>
         <div className="top-header">
           <div container-head>
             <img src="/logo.png" alt="" className="logo" />
+            <img src="back.png" className="backbutton" onClick={toggle}/>
           </div>
         </div>
         <img src="/Bally.png" alt="" className="pic" />
