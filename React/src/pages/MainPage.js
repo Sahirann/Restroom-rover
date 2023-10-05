@@ -18,7 +18,8 @@ import Navbar from "../components/Navbar";
 import SearchBar from "../components/Searchbar";
 import UseGeoLocation from "../components/useGegoLocation";
 import { supabase } from "../supabaseClient";
-///
+import L from 'leaflet';
+
 
 
 
@@ -37,6 +38,22 @@ const MainPage = () => {
   const info = infoCard.map((data, index) => {
     return <Card key={index} data={data} ></Card>
   })
+
+  const [userLocation, setUserLocation] = useState(null);
+
+  useEffect(() => {
+    // Get user's location using the Geolocation API
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        const { latitude, longitude } = position.coords;
+        setUserLocation([latitude, longitude]);
+      },
+      (error) => {
+        console.error("Error getting user location:", error);
+      }
+    );
+  }, []);
+
   const location = UseGeoLocation();
 
   const markergreen = [
@@ -48,7 +65,10 @@ const MainPage = () => {
       geocode: [13.824872, 100.515559],
       popUp: "pop up 1"
     },
-
+    // {
+    //   geocode: (userLocation),
+    //   popUp: "pop up 1"
+    // },
   ]
   const markerred = [
     {
@@ -77,7 +97,7 @@ const MainPage = () => {
     },
     {
       geocode: [13.824072, 100.516106],
-      popUp: {info}
+      popUp: <Card />
     }
 
   ]
@@ -101,7 +121,7 @@ const MainPage = () => {
     iconSize: [45, 50]
   })
 
-  // const position = [51.505, -0.09]
+
   const [detail, setdetail] = useState([]);
   useEffect(() => {
     axios.get("http://localhost:3001/").then((response) => {
@@ -138,14 +158,7 @@ const MainPage = () => {
             <Marker position={marker.geocode} icon={markericongreen}></Marker>
           ))
           }
-          
-
-
-          {location.loaded && !location.error && (
-            <Marker icon={markericonuser} position={[location.coordinates.lat, location.coordinates.lng]}>
-            </Marker>
-          )}
-
+      
 
         </MapContainer>
       </div>
