@@ -75,6 +75,11 @@ button:active{
   background-image: url("../../public/icon menu.png");
   position: ;
 } */
+.form{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
 *{
   font-family: Ropa Sans;
   color: #000;
