@@ -9,7 +9,7 @@ import Register from "./pages/Register";
 import Verify from "./pages/Verify";
 import DetailPin from "./pages/DetailPin";
 import MainPage from "./pages/MainPage";
-import Ticket from "./pages/Ticket";
+import Ticket from "./pages/Ticketpage";
 import { useEffect } from "react";
 import { Autosave, useAutosave } from 'react-autosave';
 
