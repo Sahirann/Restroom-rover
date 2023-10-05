@@ -4,19 +4,33 @@ import {
   useNavigationType,
   useLocation,
 } from "react-router-dom";
+import React from 'react';
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Verify from "./pages/Verify";
 import DetailPin from "./pages/DetailPin";
 import MainPage from "./pages/MainPage";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Autosave, useAutosave } from 'react-autosave';
 
-
+const AuthContext = React.createContext();
 function App() {
   const action = useNavigationType();
   const location = useLocation();
   const pathname = location.pathname;
+  
+  const [token,setToken] = useState(false)
+    // if(token){
+    //   localStorage.setItem('token',JSON.stringify(token))
+    // }
+
+    // useEffect(() => {
+    //   if(localStorage.getItem('token')){
+    //     let data = JSON.parse(localStorage.getItem('token'))
+    //     setToken(data)
+    //   }
+    // },[token])
+  
 
   useEffect(() => {
     if (action !== "POP") {
@@ -50,15 +64,24 @@ function App() {
   }, [pathname]);
 
   return (
-    
+    <AuthContext.Provider value={{token,setToken}}>
+      <Routes>
+        <Route path="/" element={<MainPage />} />
+        <Route path="/login" element={<Login setToken={setToken} />} />
+        <Route path="/Register" element={<Register />} />
+        <Route path="/Verify" element={<Verify />} />
+        <Route path="/Detail-pin" element={<DetailPin />} />
+      </Routes>
+    </AuthContext.Provider>
 
-    <Routes>
-      <Route path="/" element={<MainPage />} />
-      <Route path="/login" element={<Login />} />
-      <Route path="/Register" element={<Register />} />
-      <Route path="/Verify" element={<Verify />} />
-      <Route path="/Detail-pin" element={<DetailPin />} />
-    </Routes>
+    // <Routes>
+    //   <Route path="/" element={<MainPage />} />
+    //   <Route path="/login" element={<Login setToken={setToken} />} />
+    //   <Route path="/Register" element={<Register />} />
+    //   <Route path="/Verify" element={<Verify />} />
+    //   <Route path="/Detail-pin" element={<DetailPin />} />
+    // </Routes>
   );
 }
+export { AuthContext };
 export default App;

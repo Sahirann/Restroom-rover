@@ -44,10 +44,10 @@ const Register = () => {
       <div className="bg-small">
         <h1 className="text-rg">Register</h1>
         <form className="form" onSubmit={handleSubmit}>
-          <input name="email" type="email" placeholder="Email" onChange={handleChange} className="input" />
-          <input name="Username" type="text" placeholder="Username" onChange={handleChange} className="input" />
-          <input name="password" type="password" placeholder="Create password" onChange={handleChange} className="input" />
-          <input name="confirmpassword" type="password" placeholder="Confirm password" onChange={handleChange} className="input" />
+          <input name="email" type="email" placeholder="Email" onChange={handleChange} className="input"  />
+          <input name="Username" type="text" placeholder="Username" onChange={handleChange} className="input"  />
+          <input name="password" type="password" placeholder="Create password" onChange={handleChange} className="input"/>
+          <input name="confirmpassword" type="password" placeholder="Confirm password" onChange={handleChange} className="input"  />
           
         </form>
         {/* <input type="text" placeholder="Confirm password" className="input"/> */}

@@ -13,7 +13,7 @@ function Card(props) {
   //   setisReviewOpen(!isReviewOpen);
 
   // };
-
+  console.log(data)
   return (
     <div className="card">
       <h6 className="restroom-name">{data?.name ?? "Name"}</h6>

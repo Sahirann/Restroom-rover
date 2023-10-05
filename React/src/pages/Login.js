@@ -1,9 +1,10 @@
 import { useCallback ,useState} from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./Login.scoped.css";
 import {supabase} from "../supabaseClient"
 
-const Login = () => {
+const Login = ({setToken}) => {
+  let navigate = useNavigate()
   const [formData, setFormData] = useState({email: '', password: ''})
   console.log(formData)
   function handleChange(event) {
@@ -25,6 +26,8 @@ const Login = () => {
       })
       if (error) throw "Don't have email or Wrong password"
       console.log(data)
+      setToken(data)
+      navigate('/')
 
     } catch (error) {
       alert(error)
@@ -33,7 +36,7 @@ const Login = () => {
   }
 
   return (
-    
+
     <div className="bg">
       <div className="bg-small" >
         <div className="bg-img">
