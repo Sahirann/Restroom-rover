@@ -26,7 +26,7 @@ function Navbar() {
 
     return (
         <header>
-            <Review></Review>
+        
             <h3>
                 <button className="nav-btn" onClick={toggleSidebar} >
                     <FaBars />
