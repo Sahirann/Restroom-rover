@@ -1,18 +1,36 @@
-import { useCallback } from "react";
+import { useCallback ,useState} from "react";
 import { Link } from "react-router-dom";
 import "./Login.scoped.css";
-
+import {supabase} from "../supabaseClient"
 
 const Login = () => {
-  const onLoginClick = useCallback(() => {
-    // Please sync "MacBook Air - 1" to the project
-  }, []);
+  const [formData, setFormData] = useState({email: '', password: ''})
+  console.log(formData)
+  function handleChange(event) {
+    setFormData((prevFormData) => {
+      return {
+        ...prevFormData,
+        [event.target.name]: event.target.value
+      }
+    })
+  }
+  async function handleSubmit(e) {
+    e.preventDefault()
+    
 
-  const onRegisterClick = useCallback(() => {
-    // Please sync "Register" to the project
-  }, []);
-  
-  
+    try {
+      const { data, error } = await supabase.auth.signInWithPassword({
+        email: formData.email,
+        password: formData.password,
+      })
+      if (error) throw "Don't have email or Wrong password"
+      console.log(data)
+
+    } catch (error) {
+      alert(error)
+    }
+
+  }
 
   return (
 
@@ -21,13 +39,14 @@ const Login = () => {
         <div className="bg-img">
           <img className="img" alt="" src="/user-1@2x.png" />
         </div>
-
-        <input type="text" placeholder="Username" className="input-user" required="required" />
-        <input type="password" placeholder="Password" className="input-password" required="required" />
-        <div className="container-button">
-          <button className="button-login">Login</button>
+        <form onSubmit={handleSubmit} className="form" >
+          <input name="email" type="email" placeholder="Email" className="input-user"  onChange={handleChange} />
+          <input name="password" type="password" placeholder=" Password" className="input-password"  onChange={handleChange} />
+        </form>
+        <form onSubmit={handleSubmit} className="container-button">
+          <button type="submit" className="button-login">Login</button>
           <Link to="/Register" className="button-register">Register</Link>
-        </div>
+        </form>
 
       </div>
     </div>
