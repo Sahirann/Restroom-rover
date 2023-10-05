@@ -1,0 +1,20 @@
+.logo{
+    position: relative;
+    width:50%;;
+    /* height: 10%; */
+    bottom: 1%;
+    left: 0.1vw;
+}
+.bg1{
+    color: antiquewhite;
+}
+.grid{
+    display: grid;
+    height:  100vh;
+    grid-template-columns: 1fr 1fr;
+}
+.datapro{
+    height: 90%;
+    width: 100%;
+    align-self: flex-start;
+}

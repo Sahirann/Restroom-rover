@@ -11,6 +11,9 @@ import Verify from "./pages/Verify";
 import DetailPin from "./pages/DetailPin";
 import MainPage from "./pages/MainPage";
 import { useEffect, useState } from "react";
+import Ticket from "./pages/Ticketpage";
+import Admin from "./pages/Admin";
+import { useEffect } from "react";
 import { Autosave, useAutosave } from 'react-autosave';
 
 const AuthContext = React.createContext();
@@ -71,16 +74,12 @@ function App() {
         <Route path="/Register" element={<Register />} />
         <Route path="/Verify" element={<Verify />} />
         <Route path="/Detail-pin" element={<DetailPin />} />
+        <Route path="/Ticket" element={<Ticket />} />
+        <Route path="/admin" element={<Admin />} />
       </Routes>
     </AuthContext.Provider>
 
-    // <Routes>
-    //   <Route path="/" element={<MainPage />} />
-    //   <Route path="/login" element={<Login setToken={setToken} />} />
-    //   <Route path="/Register" element={<Register />} />
-    //   <Route path="/Verify" element={<Verify />} />
-    //   <Route path="/Detail-pin" element={<DetailPin />} />
-    // </Routes>
+    
   );
 }
 export { AuthContext };
