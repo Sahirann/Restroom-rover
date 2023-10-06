@@ -13,7 +13,6 @@ import MainPage from "./pages/MainPage";
 import { useEffect, useState } from "react";
 import Ticket from "./pages/Ticketpage";
 import Admin from "./pages/Admin";
-import { useEffect } from "react";
 import { Autosave, useAutosave } from 'react-autosave';
 
 const AuthContext = React.createContext();

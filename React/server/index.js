@@ -24,6 +24,15 @@ app.get("/", async (req, res) => {
     console.log(data);
   }
 })
+app.get("/admin", async (req, res) => {
+  const { data, error } = await supabase.from("latlng").select('infoCard(id,name,address),lat,lng,type(color)');
+  if (error) {
+    console.log(error);
+  } else {
+    res.status(300).json(data);
+    console.log(data);
+  }
+})
 
 
 //     db.query("SELECT * FROM detail", (err, result) => {
