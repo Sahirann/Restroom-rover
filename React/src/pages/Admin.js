@@ -35,6 +35,7 @@ const initialRows = [
     age: 25,
     joinDate: randomCreatedDate(),
     role: randomRole(),
+    address: "asd",
   },
   {
     id: randomId(),
