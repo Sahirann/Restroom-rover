@@ -13,6 +13,7 @@ import MainPage from "./pages/MainPage";
 import { useEffect, useState } from "react";
 import Ticket from "./pages/Ticketpage";
 import Admin from "./pages/Admin";
+import Test from "./pages/Test";
 
 import { Autosave, useAutosave } from 'react-autosave';
 
@@ -75,7 +76,10 @@ function App() {
         <Route path="/Verify" element={<Verify />} />
         <Route path="/Detail-pin" element={<DetailPin />} />
         <Route path="/Ticket" element={<Ticket />} />
+
+        <Route path="/test" element={<Test />} />
         <Route path="/admin" element={<Admin />} />
+        
       </Routes>
     </AuthContext.Provider>
 

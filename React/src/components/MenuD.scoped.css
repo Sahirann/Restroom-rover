@@ -45,7 +45,7 @@
     border: 1px solid #474545;
     /* Adjust the color and border properties as needed */
     margin: 10px;
-    margin-top: 32vh;
+    margin-top: 24vh;
 
 }
 
@@ -79,6 +79,10 @@
 .t-con{
     font-size: 1.75vw;
     margin-left: 2.25vw;
+}
+.s-admin{
+    width: 4.5vw;
+    margin-left: 10.2%;
 }
 .V-acc{
     display: flex;
@@ -138,7 +142,7 @@
     border: 2px solid #d2caca;
     box-sizing: border-box;
     text-decoration: none;
-    
+    overflow: hidden;
     /* position: absolute;
     left: 0;
     bottom: 3%;  */
@@ -154,6 +158,26 @@
     margin-bottom: 15%;
     margin-right: 10%;
     
+    
+}
+.logout{
+    font-size: 2vw;
+    width: 37%;
+    position: relative;
+    left: 35%;
+    bottom: 7%;
+    
+    margin-bottom: 15%;
+    margin-right: 10%;
+    border-radius: 24px;
+    background-color: #312f2e;
+    border: 2px solid #d2caca;
+    box-sizing: border-box;
+    text-decoration: none;
+    overflow: hidden;
+}
+.input-profile{
+    position: absolute;
     
 }
 *{

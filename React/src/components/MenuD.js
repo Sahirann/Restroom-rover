@@ -22,6 +22,7 @@ function MenuD(props) {
     async function handleLogout(){
         // localStorage.removeItem('token')
         const { error } = await supabase.auth.signOut()
+        window.location.reload()
     }
 
     return (
@@ -39,9 +40,13 @@ function MenuD(props) {
                         <img src="Prestroom.png" alt="" className="s-pin" />
                         <p className="t-pin">Pin restroom</p>
                     </Link>
-                    <Link to="/contact_support" className="submenu">
+                    <Link to="/Ticket" className="submenu">
                         <img src="Csupport.png" alt="" className="s-con" />
                         <p className="t-con">Contact support</p>
+                    </Link>
+                    <Link to="/admin" className="submenu">
+                        <img src="admin.png" alt="" className="s-admin" />
+                        <p className="t-con">Admin</p>
                     </Link>
                 </div>
                 <hr className="line2" />
@@ -50,7 +55,10 @@ function MenuD(props) {
                     <p className="t-ver">Verify account</p>
                 </Link> */}
                 <div className="name">
+                    <div className="profile">
                     <img src="formpic.png" alt="" className="s-name" />
+                    <input className="input-profile" type="file" />
+                    </div>
                     <div className="contain-name">
                         <p className="t-name">{token?.user?.user_metadata?.Username??"Guess" }</p>
                         <Link to="/verify" className="V-acc">
@@ -60,11 +68,11 @@ function MenuD(props) {
                     </div>
                     <img src="Vaccount.png" alt="" className="s-verr" />
                 </div>
-                <Link to="/login" className="login">
+                <Link to="/login" className="login" style={ token ? {visibility:"hidden"} : {width:"37%"}}>
                     <img className="pic-login" src="login.svg" alt="" />
                     <p className="t-login">Login</p>
                 </Link>
-                <button onClick={handleLogout}>Log out</button>
+                <button className="logout" onClick={handleLogout} style={ token ? {width:"37%"} : { visibility:"hidden" }} >Log out</button>
             </div>
 
     )

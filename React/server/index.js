@@ -3,6 +3,7 @@ require("dotenv").config();
 const express = require("express");
 const app = express();
 const cors = require("cors");
+const { azAZ } = require("@mui/material/locale");
 
 
 
@@ -21,7 +22,7 @@ app.get("/", async (req, res) => {
     console.log(error);
   } else {
     res.status(200).json(data);
-    console.log(data);
+    // console.log(data);
   }
 })
 app.get("/admin", async (req, res) => {
@@ -30,10 +31,37 @@ app.get("/admin", async (req, res) => {
     console.log(error);
   } else {
     res.status(300).json(data);
-    console.log(data);
+    // console.log(data);
   }
 })
 
+app.get("/comment1", async (req,res) =>{
+  const {data,error} = await supabase.from("comment").select('comment,star,name,profiles(username)');
+  if (error) {
+    console.log(error);
+  } else {
+    res.status(200).json(data);
+    console.log(data)
+  }
+})
+app.post("/comment",async (req,res)=>{
+  const id = req.body.id
+  const star = req.body.star
+  const comment = req.body.comment
+  const name = req.body.name
+  
+  const { error } = await supabase
+  .from('comment')
+  .insert({ id: id,comment:comment,name:name,star:star })
+  if (error){
+    console.log(error)
+  } else {
+    res.send("Value inserted")
+  }
+
+  
+
+})
 
 //     db.query("SELECT * FROM detail", (err, result) => {
 //       if (err) {

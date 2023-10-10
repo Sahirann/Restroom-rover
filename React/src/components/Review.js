@@ -1,7 +1,6 @@
-import { useState, useCallback } from "react";
+import { useState, useCallback ,useEffect} from "react";
+import axios from "axios"
 import ReactStars from "react-rating-stars-component";
-// import logo from "../../public/logo.png"
-// import logo from "/logo.png"
 import PortalPopup from "../components/PortalPopup";
 import styles from "./Review.scoped.css";
 import Comment from "./Comment";
@@ -13,7 +12,17 @@ const Review = (props) => {
   const Slidestyle = isOpen?"open":"close"
   const [Wreview,setWreview] = useState(false);
   const openWreview = () => setWreview(!Wreview)
-
+  const [comment,setComment] = useState([]);
+  useEffect(()=>{
+    axios.get("http://localhost:3001/comment1").then((response)=>{
+      setComment(response.data);
+    })
+  },[])
+  const showComment = comment.map((dataComment,index)=>{
+    if (data?.name === dataComment?.name ){
+      return <Comment key={index} data={dataComment}  ></Comment>
+    }
+  })
   return (
       
       <div className={`block ${Slidestyle}`}>
@@ -35,21 +44,11 @@ const Review = (props) => {
         </div>
         <button className="button-review" onClick={openWreview}>write review</button>
         <div className="WReview">
-          <WReview status ={Wreview} close={setWreview} />
+          <WReview nameplace={data?.name} status ={Wreview} close={setWreview} />
         </div>
         <hr className="line" />
         
-        <Comment className="comment"></Comment>
-        <Comment className="comment"></Comment>
-        <Comment className="comment"></Comment>
-        <Comment className="comment"></Comment>
-        <Comment className="comment"></Comment>
-        <Comment className="comment"></Comment>
-        <Comment className="comment"></Comment>
-        <Comment className="comment"></Comment>
-        <Comment className="comment"></Comment>
-        <Comment className="comment"></Comment>
-        <Comment className="comment"></Comment>
+        {showComment}
         
       </div>
       
