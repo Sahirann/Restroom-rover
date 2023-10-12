@@ -11,23 +11,67 @@ import "leaflet/dist/leaflet.css";
 import "./MainPage.css"
 import axios from "axios"
 import { Icon, imageOverlay } from "leaflet";
-import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet'
-////
+import { MapContainer, TileLayer, Marker, Popup, useMapEvents ,Polyline } from 'react-leaflet'
+
 import MenuIcon from '@mui/icons-material/Menu';
 import Navbar from "../components/Navbar";
 import SearchBar from "../components/Searchbar";
-import UseGeoLocation from "../components/useGegoLocation";
+
 import { supabase } from "../supabaseClient";
 import L from 'leaflet';
 import DetailPin from "./DetailPin";
 
 
-
+const UserLocationMarker = ({ position, icon }) => {
+  return (
+    <Marker position={position} icon={icon}>
+      <Popup>
+        อยู่นี่งาย
+      </Popup>
+    </Marker>
+  );
+};
 
 const MainPage = () => {
 
 
+  const [userLocation, setUserLocation] = useState(null);
 
+  const getUserLocation = async () => {
+    try {
+      const position = await new Promise((resolve, reject) => {
+        navigator.geolocation.getCurrentPosition(resolve, reject, { timeout: 10000 });
+      });
+
+      setUserLocation([position.coords.latitude, position.coords.longitude]);
+    } catch (error) {
+      console.error("Error getting user location:", error.message);
+    }
+  };
+
+  useEffect(() => {
+    getUserLocation();
+  }, []);
+
+  const MyComponent = () => {
+    const map = useMapEvents({
+      click: () => {
+        // Handle map click events
+      },
+    });
+
+    // Center the map on user's location when available
+    if (userLocation) {
+      map.setView(userLocation, map.getZoom());
+    }
+
+    return null; // Render nothing
+  };
+
+  const markerIconUser = new L.Icon({
+    iconUrl: "/Userlocation.png",
+    iconSize: [45, 50],
+  });
 
   // const [infoCard,setinfoCard] = useState([])
   // console.log(infoCard)
@@ -52,23 +96,6 @@ const MainPage = () => {
     console.log(isReview)
   };
 
-  const [userLocation, setUserLocation] = useState(null);
-
-  useEffect(() => {
-    // Get user's location using the Geolocation API
-    navigator.geolocation.getCurrentPosition(
-      (position) => {
-        const { latitude, longitude } = position.coords;
-        setUserLocation([latitude, longitude]);
-      },
-      (error) => {
-        console.error("Error getting user location:", error);
-      }
-    );
-  }, []);
-
-  const location = UseGeoLocation();
-
   const markergreen = [
     {
       geocode: [13.820399, 100.515894],
@@ -78,10 +105,7 @@ const MainPage = () => {
       geocode: [13.824872, 100.515559],
       popUp: "pop up 1"
     },
-    // {
-    //   geocode: (userLocation),
-    //   popUp: "pop up 1"
-    // },
+
   ]
   const markerred = [
     {
@@ -129,10 +153,10 @@ const MainPage = () => {
     iconSize: [45, 50]
   })
 
-  const markericonuser = new Icon({
-    iconUrl: "/Userlocation.png",
-    iconSize: [45, 50]
-  })
+  // const markericonuser = new Icon({
+  //   iconUrl: "/Userlocation.png",
+  //   iconSize: [45, 50]
+  // })
 
 
   const [pin, setpin] = useState([]);
@@ -154,13 +178,16 @@ const MainPage = () => {
             </Marker>
   })
   
+  const limeOptions = { color: 'lime' }
+
+  const polyline = [
+    [13.823722, 100.514468],
+    [13.825873, 100.516835],
+  ]
 
 
   return (
     <div>
-      {/* {detailcard} */}
-      {/* {infoCard} */}
-
       <div className="containermap">
         <MapContainer center={[13.821813, 100.514062]} zoom={20}>
           <TileLayer
@@ -168,29 +195,9 @@ const MainPage = () => {
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           />
           {pincard}
-          {/* {markers.map(marker => (
-            <Marker position={marker.geocode} icon={markericon}>
-              <Popup>
-                {marker.popUp}
-              </Popup>
-            </Marker>
-          ))
-          }
-          {markerred.map(marker => (
-            <Marker position={marker.geocode} icon={markericonred}></Marker>
-          ))
-          }
-          {markergreen.map(marker => (
-            <Marker position={marker.geocode} icon={markericongreen}></Marker>
-          ))
-          } */}
-
-          {/* {location.loaded && !location.error && (
-            <Marker icon={markericonuser} position={[location.coordinates.lat, location.coordinates.lng]}>
-
-            </Marker>
-          )} */}
-
+          {userLocation && <UserLocationMarker position={userLocation} icon={markerIconUser} />}
+          {/* <MyComponent /> */}
+          <Polyline pathOptions={limeOptions} positions={polyline} />
         </MapContainer>
       </div>
 

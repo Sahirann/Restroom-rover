@@ -45,7 +45,7 @@
     border: 1px solid #474545;
     /* Adjust the color and border properties as needed */
     margin: 10px;
-    margin-top: 24vh;
+    margin-top: 15vh;
 
 }
 
@@ -94,6 +94,7 @@
 .s-ver{
     width: 3vw;
     /* margin-left: 15%; */
+    
 }
 .t-ver{
     font-size: 1vw;
@@ -111,6 +112,7 @@
 }
 .contain-name{
     margin-left: 2%;
+    margin-bottom: 4vh
 }
 .s-name{
     width: 7vw;
@@ -127,6 +129,7 @@
     width: 4vw;
     margin-left: 6%;
     margin-top: 3.2vh;
+    margin-bottom: 4vh;
 }
 .login{
     display: flex;
@@ -178,6 +181,33 @@
 }
 .input-profile{
     position: absolute;
+
+    
+}
+
+input[type="file"]{
+    display: none;
+}
+
+label{
+    color: white;
+    height: 5vh;
+    width: 8vw;
+    border-radius: 24px;
+    border: 2px solid #d2caca;
+    background-color: #312f2e;
+    /* position: absolute; */
+    /* margin: auto; */
+    margin-left: 1vw;
+    
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    font-size: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     
 }
 *{
