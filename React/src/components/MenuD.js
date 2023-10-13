@@ -1,9 +1,11 @@
-import { useCallback, useContext } from "react";
+import { useCallback, useContext, useEffect, useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import "./MenuD.scoped.css";
 import { AuthContext } from "../App";
 import { supabase } from "../supabaseClient";
 import AddPhotoAlternateIcon from '@mui/icons-material/AddPhotoAlternate';
+import axios from "axios";
+
 
 const Win = () => {
     if (false) {
@@ -20,19 +22,99 @@ function MenuD(props) {
 
     const Slidestyle = isOpen ? "open" : "close"
 
-
     async function handleLogout() {
         // localStorage.removeItem('token')
         const { error } = await supabase.auth.signOut()
         window.location.reload()
     }
+    
+    // const [loading ,setLoading] = useState(true);
+    // const [username,setUsername]= useState(null);
+    // const [avatar,setAvatar] = useState(null);
+    
+    // useEffect(()=>{
+    //     getProfile();
+    // },[])
 
+    // async function getProfile (){
+    //     try{
+    //         setLoading(true);
+    //         let {data,error,status} = await supabase
+    //                                         .from(profiles)
+    //                                         .select(`username , avatar_url`)
+    //                                         .eq('id',user.id)
+    //                                         .single()
+    //         if (error && status !==406){
+    //             throw error
+    //         }
+    //         if (data){
+    //             setUsername(data.username)
+    //             setAvatar(data.avatar_url)
+    //         }
+    //     }catch(error){
+    //         alert(error.message)
+    //     }finally{
+    //         setLoading(false)
+    //     }
+    // }
+
+    // const [profile, setProfile] = useState([]);
+    // useEffect(() => {
+    //     axios.get("http://localhost:3001/getprofile").then((response) => {
+    //         setProfile(response.data);
+    //         console.log("update");
+    //     }).catch((err) => { console.log(err) });
+    // }, []);
+    
+
+    // const [avatarUrl, setAvatarUrl] = useState(null);
+    // const [uploading, setUploading] = useState(false);
+    // useEffect(() => {
+    //     if (url) downloadImage(url);
+    // }, [url]);
+    // async function downloadImage(path) {  ///for download img
+    //     try {
+    //         const { data, error } = await supabase.storage.from('avatars').download(path);
+    //         if (error) {
+    //             throw error;
+    //         }
+    //         const url = URL.createObjectURL(data);
+    //         setAvatarUrl(url);
+    //     } catch (error) {
+    //         console.log('Error downloading image: ', error.message)
+    //     }
+    // }
+    // async function uploadAvatar(event) {
+    //     try {
+    //         setUploading(true);
+    //         if (!event.target.files || event.target.files.length === 0) {
+    //             throw new Error('You must select an image to upload.');
+    //         }
+    //         const file = event.target.files[0];
+    //         const fileExt = file.name.split('.').pop();
+    //         const fileName = `${Math.random()}.${fileExt}`;
+    //         const filePath = `${fileName}`
+    //         let { error: uploadError } = await supabase.storage.from('avatars').upload(filePath, file);
+    //         if (uploadError) {
+    //             throw uploadError;
+    //         }
+    //         onUpload(filePath);
+    //     } catch (error) {
+    //         alert(error.message);
+    //     } finally {
+    //         setUploading(false);
+    //     }
+    // }
+
+ 
+
+    
+     
     return (
 
         <div className={`background ${Slidestyle}`}>
             <div className="container-top" >
                 <img src="logomenu.png" alt="" className="logo" />
-
                 <img src="back.png" alt="" className="back" onClick={toggle} />
 
             </div>
@@ -62,12 +144,50 @@ function MenuD(props) {
                     Choose your Profile
                 </label> */}
                 <div className="profile">
+                    {/* {avatarUrl ? (
+                        <img src={avatarUrl} alt="Avatar" className="s-name"></img>
+                    ) : (
+                        
+                    )} */}
+                    <img src="formpic.png" alt="" className="s-name" />
+                    {/* <label style={{ width: "5vw", fontSize: "0.7vw", left: "0.2vw", position: "relative" }} htmlfor="avatar"  >
+                        <AddPhotoAlternateIcon /> {uploading ? 'Uploading...' : 'Choose your Profile '}
+                    </label>
+                    <input
+                        className="input-profile"
+                        type="file"
+                        id="file"
+                        accept="image/*"
+                        onChange={uploadAvatar}
+                        disabled={uploading}
+                        visibility="hidden"
+                        position="absolute"
+
+                        type="file"
+                        id="avatar"
+                        accept="image/*"
+                        onChange={(e) => uploadAvatar(e)}
+                        disabled={uploading}
+                    /> */}
+                    
+                    <label style={{ width: "5vw", fontSize: "0.7vw", left: "0.2vw", position: "relative" }} htmlFor="avatar">
+                    <AddPhotoAlternateIcon /> Choose
+                    </label>
+                    <input
+                    type="file"
+                    id="avatar"
+                    accept="image/*"
+                    // onChange={(e) => uploadAvatar(e)}
+                    // disabled={uploading}
+                    />
+                </div>
+                {/* <div className="profile">
                     <img src="formpic.png" alt="" className="s-name" />
                     <input className="input-profile" type="file" id="file" />
                     <label for = "file">
                     <AddPhotoAlternateIcon/> Choose your Profile 
                     </label>
-                </div>
+                </div> */}
                 <div className="contain-name">
                     <p className="t-name">{token?.user?.user_metadata?.Username ?? "Guess"}</p>
                     <Link to="/verify" className="V-acc">
@@ -82,6 +202,7 @@ function MenuD(props) {
                 <p className="t-login">Login</p>
             </Link>
             <button className="logout" onClick={handleLogout} style={token ? { width: "37%" } : { visibility: "hidden" }} >Log out</button>
+            
         </div>
 
     )
