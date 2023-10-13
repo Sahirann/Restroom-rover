@@ -44,6 +44,7 @@ app.get("/comment1", async (req,res) =>{
     console.log(data)
   }
 })
+
 app.post("/comment",async (req,res)=>{
   const id = req.body.id
   const star = req.body.star
@@ -58,9 +59,15 @@ app.post("/comment",async (req,res)=>{
   } else {
     res.send("Value inserted")
   }
-
-  
-
+})
+app.get("/getprofile", async (req, res) => {
+  const { data, error } = await supabase.from("profiles").select('avatar_url');
+  if (error) {
+    console.log(error);
+  } else {
+    res.status(201).json(data);
+    // console.log(data);
+  }
 })
 
 //     db.query("SELECT * FROM detail", (err, result) => {
