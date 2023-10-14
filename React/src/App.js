@@ -16,6 +16,11 @@ import Admin from "./pages/Admin";
 import Test from "./pages/Test";
 
 import { Autosave, useAutosave } from 'react-autosave';
+import {supabase} from "./supabaseClient"
+import { createClient } from '@supabase/supabase-js'
+import { Auth } from '@supabase/auth-ui-react'
+import { ThemeSupa } from '@supabase/auth-ui-shared'
+
 
 const AuthContext = React.createContext();
 function App() {
@@ -23,10 +28,34 @@ function App() {
   const location = useLocation();
   const pathname = location.pathname;
   
-  const [token,setToken] = useState(false)
-    // if(token){
-    //   localStorage.setItem('token',JSON.stringify(token))
-    // }
+  const [token,setToken] = useState(null)
+  // const [session, setSession] = useState(null)
+
+    useEffect(() => {
+      supabase.auth.getSession().then(({ data: { session:token } }) => {
+        setToken(token);
+      })
+
+      const {
+        data: { subscription },
+      } = supabase.auth.onAuthStateChange((_event, token) => {
+        setToken(token);
+      
+      })
+
+      return () => subscription.unsubscribe()
+    }, [])
+
+  //   if (!session) {
+  //     return (<Auth supabaseClient={supabase} appearance={{ theme: ThemeSupa }} />)
+  //   }
+  //   else {
+  //     return (<div>Logged in!</div>)
+  //   }
+  // }
+  // if(token){
+  //     localStorage.setItem('token',JSON.stringify(token))
+  //   }
 
     // useEffect(() => {
     //   if(localStorage.getItem('token')){
@@ -71,7 +100,7 @@ function App() {
     <AuthContext.Provider value={{token,setToken}}>
       <Routes>
         <Route path="/" element={<MainPage />} />
-        <Route path="/login" element={<Login setToken={setToken} />} />
+        <Route path="/login" element={<Login />} />
         <Route path="/Register" element={<Register />} />
         <Route path="/Verify" element={<Verify />} />
         <Route path="/Detail-pin" element={<DetailPin />} />
