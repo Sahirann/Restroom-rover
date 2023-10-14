@@ -40,57 +40,66 @@ function MenuD(props) {
 
     const [loading ,setLoading] = useState(true);
     const [username,setUsername]= useState(null);
-    const [avatar_url,setAvatar] = useState(null);
-    const  url = avatar_url
-    const onUpload = (url) =>{
-        setAvatar(url)
-        updataProfile({username,avatar_url:url})
-    }
-    useEffect(()=>{
-        getProfile();
-    },[token])
+    // const [avatar_url,setAvatar] = useState(null);
+    // const  url = avatar_url
+    
+    const onUpload = (url) =>{ 
 
-    async function getProfile (){
-        try{
-            setLoading(true);
-            let {data,error,status} = await supabase
-                                            .from('profiles')
-                                            .select(`username , avatar_url`)
-                                            .eq('id',token?.user?.id)
-                                            .single()
-            if (error && status !==406){
-                throw error
-            }
-            if (data){
-                setUsername(data.username);
-                setAvatar(data.avatar_url);
-            }
-        }catch(error){
-            alert(error.message);
-        }finally{
-            setLoading(false);
-        }
+        const { data } = supabase.storage.from('avatars').getPublicUrl(url)
+        console.log(data)
+        // setAvatar(data?.publicUrl)
+        updataProfile({username:token?.user?.user_metadata?.Username,avatar_url:data?.publicUrl})
     }
+    // useEffect(()=>{
+    //     getProfile();
+    // },[token])
+
+    // async function getProfile (){
+    //     try{
+    //         setLoading(true);
+    //         let {data,error,status} = await supabase
+    //                                         .from('profiles')
+    //                                         .select(`username , avatar_url`)
+    //                                         .eq('id',token?.user?.id)
+    //                                         .single()
+    //         if (error && status !==406){
+    //             throw error
+    //         }
+    //         if (data){
+    //             setUsername(data.username);
+    //             setAvatar(data.avatar_url);
+    //         }
+    //     }catch(error){
+    //         alert(error.message);
+    //     }finally{
+    //         setLoading(false);
+    //     }
+    // }
     async function updataProfile({username,avatar_url}){
         try{
             setLoading(true);
-            const user = supabase.auth.user();
-
+            // const user = supabase.auth.user();
+            
+            const user  = token?.user
             const updates = {
                 id : user.id,
                 username,
                 avatar_url,
-                updated_at: new Data(),
+                updated_at: new Date(),
                 
             }
+            console.log(user)
             let { error } = await supabase.from('profiles').upsert(updates, {
                 returning : "minimal"
             })
+            const { data, error1 } = await supabase.auth.updateUser({data: { avatar_url: avatar_url }
+  })
             if (error){
                 throw error;
             }
         } catch(error){
-            alert(error.message);
+            // alert(error.message);
+            console.log(error)
         } finally{
             setLoading(false);
         }
@@ -106,23 +115,29 @@ function MenuD(props) {
     // }, []);
 
 
+
+
+
     const [avatarUrl, setAvatarUrl] = useState(null);
     const [uploading, setUploading] = useState(false);
-    useEffect(() => {
-        if (url) downloadImage(url);
-    }, [url]);
-    async function downloadImage(path) {  ///for download img
-        try {
-            const { data, error } = await supabase.storage.from('avatars').download(path);
-            if (error) {
-                throw error;
-            }
-            const url = URL.createObjectURL(data);
-            setAvatarUrl(url);
-        } catch (error) {
-            console.log('Error downloading image: ', error.message)
-        }
-    }
+    
+    
+    // useEffect(() => {
+    //     if (url) downloadImage(url);
+    // }, [url]);
+    // async function downloadImage(path) {  ///for download img
+    //     try {
+    //         const { data, error } = await supabase.storage.from('avatars').download(path);
+    //         if (error) {
+    //             throw error;
+    //         }
+    //         const url = URL.createObjectURL(data);
+    //         // console.log(url)
+    //         setAvatarUrl(url);
+    //     } catch (error) {
+    //         console.log('Error downloading image: ', error.message)
+    //     }
+    // }
     async function uploadAvatar(event) {
         try {
             setUploading(true);
@@ -131,9 +146,9 @@ function MenuD(props) {
             }
             const file = event.target.files[0];
             const fileExt = file.name.split('.').pop();
-            const fileName = `${Math.random()}.${fileExt}`;
+            const fileName = `${token?.user?.id}.${fileExt}`;
             const filePath = `${fileName}`
-            let { error: uploadError } = await supabase.storage.from('avatars').upload(filePath, file);
+            let { error: uploadError } = await supabase.storage.from('avatars').upload(filePath, file,{upsert:true});
             if (uploadError) {
                 throw uploadError;
             }
@@ -184,33 +199,11 @@ function MenuD(props) {
                     Choose your Profile
                 </label> */}
                 <div className="profile">
-                    {avatarUrl ? (
-                        <img src={avatarUrl} alt="Avatar" className="s-name"></img>
+                    {token?.user?.user_metadata?.avatar_url ? (
+                        <img src={token?.user?.user_metadata?.avatar_url+"?nocache=" + Date.now().toString()} alt="Avatar" className="s-name"></img>
                     ) : (<img src="formpic.png" alt="" className="s-name" />
                         
                     )}
-                  
-                    {/* <img src="formpic.png" alt="" className="s-name" /> */}
-                    {/* <label style={{ width: "5vw", fontSize: "0.7vw", left: "0.2vw", position: "relative" }} htmlfor="avatar"  >
-                        <AddPhotoAlternateIcon /> {uploading ? 'Uploading...' : 'Choose your Profile '}
-                    </label>
-                    <input
-                        className="input-profile"
-                        type="file"
-                        id="file"
-                        accept="image/*"
-                        onChange={uploadAvatar}
-                        disabled={uploading}
-                        visibility="hidden"
-                        position="absolute"
-
-                        type="file"
-                        id="avatar"
-                        accept="image/*"
-                        onChange={(e) => uploadAvatar(e)}
-                        disabled={uploading}
-                    /> */}
-
                     <label style={{ width: "5vw", fontSize: "0.7vw", left: "0.2vw", position: "relative" }} htmlFor="single">
                         <AddPhotoAlternateIcon /> {uploading ? "Uploading...":"Choose your image"}
                     </label>
@@ -218,11 +211,8 @@ function MenuD(props) {
                         type="file"
                         id="single"
                         accept="image/*"
-                    
                         onChange={uploadAvatar}
                         disabled={uploading}
-                    // onChange={(e) => uploadAvatar(e)}
-                    // disabled={uploading}
                     />
                 </div>
                 {/* <div className="profile">
