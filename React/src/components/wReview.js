@@ -20,13 +20,13 @@ const WReview = (props) => {
     setId(token?.user?.id)
     }
   , [id]);
-  console.log(id)
+  // console.log(id)
   useEffect(() => {
     setName(nameplace)
     }
   ,[nameplace] );
-  console.log(id)
-  console.log(nameplace)
+  // console.log(id)
+  // console.log(nameplace)
   // console.log(star)
   // console.log(comment)
   // console.log(token?.user?.id)

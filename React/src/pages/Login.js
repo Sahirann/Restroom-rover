@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import "./Login.scoped.css";
 import {supabase} from "../supabaseClient"
 
-const Login = ({setToken}) => {
+const Login = () => {
   let navigate = useNavigate()
   const [formData, setFormData] = useState({email: '', password: ''})
   console.log(formData)
@@ -26,7 +26,8 @@ const Login = ({setToken}) => {
       })
       if (error) throw "Don't have email or Wrong password"
       console.log(data)
-      setToken(data)
+      // setToken(data)
+      
       navigate('/')
 
     } catch (error) {
