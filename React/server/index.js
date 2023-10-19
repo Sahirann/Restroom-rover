@@ -1,4 +1,4 @@
-const {createClient} = require("@supabase/supabase-js")
+const { createClient } = require("@supabase/supabase-js")
 require("dotenv").config();
 const express = require("express");
 const app = express();
@@ -30,37 +30,75 @@ app.get("/admin", async (req, res) => {
   if (error) {
     console.log(error);
   } else {
-    res.status(300).json(data);
-    // console.log(data);
+    res.status(203).json(data);
+    console.log(data);
   }
 })
 
-app.get("/comment1", async (req,res) =>{
-  const {data,error} = await supabase.from("comment").select('comment,star,name,profiles(username)');
+app.get("/comment1", async (req, res) => {
+  const { data, error } = await supabase.from("comment").select('comment,star,name,picture,profiles(username,avatar_url)');
   if (error) {
     console.log(error);
   } else {
     res.status(200).json(data);
-    console.log(data)
+    // console.log(data)
   }
 })
-app.post("/comment",async (req,res)=>{
+
+app.post("/comment", async (req, res) => {
   const id = req.body.id
   const star = req.body.star
   const comment = req.body.comment
   const name = req.body.name
-  
+  const picture = req.body.picture
+
   const { error } = await supabase
-  .from('comment')
-  .insert({ id: id,comment:comment,name:name,star:star })
-  if (error){
+    .from('comment')
+    .upsert({ id: id, comment: comment, name: name, star: star, picture: picture })
+    .eq("id", id)
+  // if (error) {
+  //   const { error } = await supabase
+  //     .from('comment')
+  //     .update({ id: id, comment: comment, name: name, star: star, picture: picture })
+  //     .eq("id", id)
+  // }else{
+  // const { error } = await supabase
+  //   .from('comment')
+  //   .insert({ id: id, comment: comment, name: name, star: star, picture: picture })
+  // }
+  if (error) {
+    const { error } = await supabase
+      .from('comment')
+      // .insert({ id: id, comment: comment, name: name, star: star, picture: picture })
     console.log(error)
   } else {
     res.send("Value inserted")
   }
-
-  
-
+})
+// app.post("/comment_update",async (req,res)=>{
+//   const id = req.body.id
+//   const star = req.body.star
+//   const comment = req.body.comment
+//   const name = req.body.name
+//   const picture = req.body.picture
+//   const { error } = await supabase
+//   .from('comment')
+//   .update({ id: id,comment:comment,name:name, star:star , picture:picture })
+//   .eq("id",id)
+//   if (error){
+//     console.log(error)
+//   } else {
+//     res.send("Value inserted")
+//   }
+// })
+app.get("/getprofile", async (req, res) => {
+  const { data, error } = await supabase.from("profiles").select('avatar_url');
+  if (error) {
+    console.log(error);
+  } else {
+    res.status(201).json(data);
+    // console.log(data);
+  }
 })
 
 //     db.query("SELECT * FROM detail", (err, result) => {

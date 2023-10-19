@@ -11,6 +11,8 @@
     "@mui/styled-engine-sc": "^5.14.12",
     "@mui/x-data-grid": "^6.16.0",
     "@mui/x-data-grid-generator": "^6.16.0",
+    "@supabase/auth-ui-react": "^0.4.5",
+    "@supabase/auth-ui-shared": "^0.1.7",
     "@supabase/supabase-js": "^2.38.0",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
