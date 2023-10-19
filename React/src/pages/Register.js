@@ -24,7 +24,8 @@ const Register = () => {
             password: formData.password,
             options: {
               data: {
-                Username: formData.Username
+                Username: formData.Username,
+                role : 'member'
               }
             }
           }

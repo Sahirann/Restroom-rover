@@ -34,6 +34,15 @@ app.get("/admin", async (req, res) => {
     console.log(data);
   }
 })
+app.get("/role", async (req, res) => {
+  const { data, error } = await supabase.from("profiles").select('role,id');
+  if (error) {
+    console.log(error);
+  } else {
+    res.status(204).json(data);
+    console.log(data);
+  }
+})
 
 app.get("/comment1", async (req, res) => {
   const { data, error } = await supabase.from("comment").select('comment,star,name,picture,profiles(username,avatar_url)');
