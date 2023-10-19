@@ -48,7 +48,7 @@ const MainPage = () => {
       console.error("Error getting user location:", error.message);
     }
   };
-
+  
   useEffect(() => {
     getUserLocation();
   }, []);
@@ -180,10 +180,10 @@ const MainPage = () => {
   
   const limeOptions = { color: 'lime' }
 
-  const polyline = [
-    userLocation,
-    [13.825873, 100.516835],
-  ]
+  const polyline = userLocation
+  ? [userLocation, [13.825873, 100.516835]]
+  : [];
+
 
 
   return (
@@ -197,7 +197,7 @@ const MainPage = () => {
           {pincard}
           {userLocation && <UserLocationMarker position={userLocation} icon={markerIconUser} />}
           {/* <MyComponent /> */}
-          <Polyline pathOptions={limeOptions} positions={polyline} />
+          {userLocation && <Polyline pathOptions={limeOptions} positions={polyline} />}
         </MapContainer>
       </div>
 
