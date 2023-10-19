@@ -1,6 +1,6 @@
 .background{
   width: 40vw;
-  height: 50vh;
+  height: 53vh;
   background-color: #D9D9D9;
   border-radius: 10%;
   border-top: 0 ;
@@ -79,8 +79,8 @@
   margin-left: 20%;
 }
 .container-button{
-  margin-left: 60%;
-  margin-top: 5%;
+  margin-left: 70%;
+  margin-top: 1vh;
 }
 .b-cancel{
   font-size: 17px;
@@ -98,6 +98,31 @@
   padding-left: 5%;
   padding-right: 5%;
   background-color: #E8C69E;
+  
+}
+input[type="file"]{
+  display: none;
+  
+}
+label{
+  color: white;
+  height: 5vh;
+  width: 8vw;
+  border-radius: 24px;
+  border: 2px solid #d2caca;
+  background-color: grey;
+  /* position: absolute; */
+  /* margin: auto; */
+  margin-left: 1vw;
+  
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  font-size: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   
 }
 *{

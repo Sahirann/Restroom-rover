@@ -1,16 +1,41 @@
 import { useCallback } from "react";
 import ReactStars from "react-rating-stars-component";
+import React, { useState, useContext, useEffect } from "react";
 import styles from "./DetailPin.scoped.css";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../App";
+import axios from "axios";
+import { supabase } from "../supabaseClient";
 const DetailPin = (props) => {
-  const onGroupClick = useCallback(() => {
-    // Please sync "MacBook Air - 1" to the project
-  }, []);
-  const {data} =props
-  const onFinishContainerClick = useCallback(() => {
-    // Please sync "MacBook Air - 1" to the project
-  }, []);
-
+  
+  const {data} = props
+  const { token, setToken } = useContext(AuthContext);
+  
+  const addComment = () => {
+    // console.log(picture)
+    if (token === false) {
+      alert("เข้าสู่ระเบิดก่อนเด้อพี่น้อง")
+    } else {
+      axios.post('http://localhost:3001/comment', {
+        id: id,
+        star: star,
+        comment: comment,
+        name: name,
+        picture:picture
+      }).then(() => {
+        setCommentList([
+          ...commentList,
+          {
+            id: id,
+            star: star,
+            comment: comment,
+            name: name,
+            picture : picture
+          }
+        ])
+      })
+    }
+  }
   return (
     <div className="bg">
       <div className="left">
