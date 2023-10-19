@@ -83,25 +83,72 @@ function EditToolbar(props) {
 
 
 const Admin = () => {
-  const [dataDelete, setdataDelete] = useState([]);
+  const [pin, setpin] = useState([]);
   useEffect(() => {
     axios.get("http://localhost:3001/admin").then((response) => {
-      setdataDelete(response.data);
+      setpin(response.data);
       console.log("update");
     }).catch((err) => { console.log(err) });
   }, []);
-  console.log(dataDelete)
-  const Rows = dataDelete.map((data, index) => {
-    return {
-      id: data.infoCard.id,
-      name: data.infoCard.name,
-      address: data.infoCard.address,
-      lat: data.lat,
-      lng: data.lng,
-      restroomtype: data.type.color,
+  
+  // console.log(pin)
+
+  const Hello = pin.map((data, index) => {
+    return  { 
+      id: randomId(),
+      name: data?.infoCard[0]?.name,
+      address: data?.infoCard[0]?.address,
+      lat: data.lat.toString(),
+      lng: data.lng.toString(),
+      restroomtype: data?.type?.color,
     }
   })
+  console.log(Hello)
+  // console.log(pin[0])
+  // const initialRows1 = [
+  //   {
+  //     id: pin[0].infoCard[0]?.id,
+  //     name: pin[0].infoCard[0]?.name,
+  //     address: pin[0].infoCard[0].address,
+  //     lat: pin[0].lat,
+  //     lng: pin[0].lng,
+  //     restroomtype: pin[0].type.color,
+  //   }
+  // ];
+  // console.log(initialRows1)
   const initialRows = [
+    {
+      id: randomId(),
+      name: "Hello",
+      address: "address",
+      lat: "112",
+      lng: "456",
+      restroomtype: "ฟรีโว้ย",
+    },
+    {
+      id: randomId(),
+      name: "Hello",
+      address: "address",
+      lat: "112",
+      lng: "456",
+      restroomtype: "ฟรีโว้ย",
+    },
+    {
+      id: randomId(),
+      name: "Hello",
+      address: "address",
+      lat: "112",
+      lng: "456",
+      restroomtype: "ฟรีโว้ย",
+    },
+    {
+      id: randomId(),
+      name: "Hello",
+      address: "address",
+      lat: "112",
+      lng: "456",
+      restroomtype: "ฟรีโว้ย",
+    },
     {
       id: randomId(),
       name: "Hello",
@@ -111,7 +158,8 @@ const Admin = () => {
       restroomtype: "ฟรีโว้ย",
     }
   ];
-  const [rows, setRows] = React.useState(initialRows);
+  console.log(initialRows)
+  const [rows, setRows] = React.useState(Hello);
   const [rowModesModel, setRowModesModel] = React.useState({});
 
   const handleRowEditStop = (params, event) => {
