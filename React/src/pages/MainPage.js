@@ -181,7 +181,7 @@ const MainPage = () => {
   const limeOptions = { color: 'lime' }
 
   const polyline = [
-    [13.823722, 100.514468],
+    userLocation,
     [13.825873, 100.516835],
   ]
 
