@@ -34,9 +34,46 @@ app.get("/admin", async (req, res) => {
     console.log(data);
   }
 })
+app.post("/role", async (req, res) => {
+  const {token_id} = req.body
+  const { data, error } = await supabase.from("profiles").select('role,verify,avatar_url').eq('id',token_id);
+  if (error) {
+    console.log(error);
+  } else {
+    res.status(206).json(data[0]);
+    // res.status(206).json(data);
+    console.log(data);
+  }
+})
+app.post("/star", async (req, res) => {
+  const {name} = req.body
+  const { data, error } = await supabase.from("commentfromuser").select('star').eq('name',name);
+  if (error) {
+    console.log(error);
+  } else {
+    res.status(207).json(data);
+    // res.status(206).json(data);
+    // console.log(data);
+  }
+})
 
+app.post("/verify", async (req, res) => {
+  const id = req.body.id
+  const ID_CARD = req.body.ID_CARD
+  const picture = req.body.picture
+
+  const { error } = await supabase
+    .from('Verify')
+    .upsert({ id: id, ID_CARD: ID_CARD, picture:picture})
+    .eq("id", id)
+  if (error) {
+    console.log(error)
+  } else {
+    res.send("Value inserted")
+  }
+})
 app.get("/comment1", async (req, res) => {
-  const { data, error } = await supabase.from("comment").select('comment,star,name,picture,profiles(username,avatar_url)');
+  const { data, error } = await supabase.from("commentfromuser").select('comment,star,name,picture,profiles(username,avatar_url)');
   if (error) {
     console.log(error);
   } else {
@@ -53,44 +90,41 @@ app.post("/comment", async (req, res) => {
   const picture = req.body.picture
 
   const { error } = await supabase
-    .from('comment')
+    .from('commentfromuser')
     .upsert({ id: id, comment: comment, name: name, star: star, picture: picture })
     .eq("id", id)
-  // if (error) {
-  //   const { error } = await supabase
-  //     .from('comment')
-  //     .update({ id: id, comment: comment, name: name, star: star, picture: picture })
-  //     .eq("id", id)
-  // }else{
-  // const { error } = await supabase
-  //   .from('comment')
-  //   .insert({ id: id, comment: comment, name: name, star: star, picture: picture })
-  // }
   if (error) {
-    const { error } = await supabase
-      .from('comment')
-      // .insert({ id: id, comment: comment, name: name, star: star, picture: picture })
     console.log(error)
   } else {
     res.send("Value inserted")
   }
 })
-// app.post("/comment_update",async (req,res)=>{
-//   const id = req.body.id
-//   const star = req.body.star
-//   const comment = req.body.comment
-//   const name = req.body.name
-//   const picture = req.body.picture
+app.post("/newpin", async (req, res) => {
+  const id = req.body.id
+  const name = req.body.name
+  const address = req.body.address
+  const information = req.body.information
+  const picture = req.body.picture
+  console.log(name)
+  const { error } = await supabase
+    .from('user_pin_info')
+    .upsert({ id: id,name: name, address: address,  information: information, picture: picture })
+    .eq("id", id)
+  if (error) {
+    console.log(error)
+  } else {
+    res.send("Value inserted")
+  }
+})
+
+// app.delete('/delete/:id'),(req,res) =>{
+//   const id = req.params.id;
 //   const { error } = await supabase
-//   .from('comment')
-//   .update({ id: id,comment:comment,name:name, star:star , picture:picture })
-//   .eq("id",id)
-//   if (error){
-//     console.log(error)
-//   } else {
-//     res.send("Value inserted")
-//   }
-// })
+//   .from('latlng')
+//   .delete()
+//   .eq('id', id)
+// }
+
 app.get("/getprofile", async (req, res) => {
   const { data, error } = await supabase.from("profiles").select('avatar_url');
   if (error) {

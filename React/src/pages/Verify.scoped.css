@@ -24,6 +24,32 @@
   
   
 }
+label{
+  color: white;
+  height: 5vh;
+  width: 8vw;
+  border-radius: 24px;
+  border: 2px solid #d2caca;
+  background-color: grey;
+  /* position: absolute; */
+  /* margin: auto; */
+  margin-left: 1vw;
+  
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  font-size: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 310px;
+  
+}
+input[type="file"]{
+  display: none;
+  
+}
 .input-ID{
   font-size: 29px;
   background-color: #d3d3d3;
@@ -48,6 +74,7 @@
   width: 200px;
   background-color: black;
   height: 200px;
+  
 }
 .buttom-submit{
   font-size: 23px;
@@ -57,7 +84,33 @@
   width: 100px;
   height: 49px;
   margin-right: 350px;
-  margin-top: 30%;
+  margin-top: 2vh;
+  
+}
+input[type="file"]{
+  display: none;
+  
+}
+label{
+  color: white;
+  height: 5vh;
+  width: 8vw;
+  border-radius: 24px;
+  border: 2px solid #d2caca;
+  background-color: grey;
+  /* position: absolute; */
+  /* margin: auto; */
+  margin-left: 1vw;
+  
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  font-size: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
 }
 .buttom-submit:hover{
   background-color: gray;

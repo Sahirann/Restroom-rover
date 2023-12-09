@@ -12,7 +12,9 @@ function Comment(props) {
     return (
         <div className="background">
             <div className="container-info">
-                <img src={data?.profiles?.avatar_url + "?nocache=" + Date.now().toString()} alt="" className="pic-pro" />
+                
+                    <img src={data?.profiles?.avatar_url + "?nocache=" + Date.now().toString()} alt="" className="pic-pro" />
+                
                 <div className="container-name">
                     <p className="name">{data?.profiles?.username}</p>
                     <ReactStars count={5} edit={false} value={data?.star ?? 0} isHalf={true} size={17} activeColor="#D3C3AF" className="star" />

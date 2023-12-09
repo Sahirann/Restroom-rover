@@ -24,7 +24,9 @@ const Register = () => {
             password: formData.password,
             options: {
               data: {
-                Username: formData.Username
+                Username: formData.Username,
+                role : 'member',
+                verify : 'no'
               }
             }
           }
@@ -53,9 +55,9 @@ const Register = () => {
         {/* <input type="text" placeholder="Confirm password" className="input"/> */}
         <form onSubmit={handleSubmit} className="container-botton">
           <button className="button-login" type="submit">Submit</button>
-          <p className="text-or">or</p>
-          <button className="button-verifiy" required>Submit and Verifiy
-          </button>
+          {/* <p className="text-or">or</p> */}
+          {/* <Link to='/verify' className="button-verifiy" required>Submit and Verifiy
+          </Link> */}
         </form>
       </div>
 

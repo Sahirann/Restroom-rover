@@ -15,9 +15,9 @@ import SearchBar from "./Searchbar";
 import Review from "./Review"
 import MenuD from "./MenuD";
 
-function Navbar() {
+function Navbar(props) {
 
-    
+    const {setSearch,search} = props
 
     const [isSidebarOpen, setSidebarOpen] = useState(false);
 
@@ -40,13 +40,17 @@ function Navbar() {
                 <Paper
                     elevation={0}
                     component="form"
-                    sx={{ p: '2px 5px', display: 'flex', alignItems: 'center', width: 400 }}
+                    sx={{ p: '0.2vw 2vh', display: 'flex', alignItems: 'center', width: 400 }}
                 >
 
                     <InputBase
                         sx={{ ml: 1, flex: 1 }}
                         placeholder="Search..."
                         inputProps={{ 'aria-label': 'search google maps' }}
+                        value={search} 
+                        onChange={(e)=>{
+                            setSearch(e.target.value)
+                        }}
                     />
                     <IconButton type="button" sx={{ p: '10px' }} aria-label="search">
                         <SearchIcon />

@@ -33,8 +33,8 @@ const UserLocationMarker = ({ position, icon }) => {
 };
 
 const MainPage = () => {
-
-
+  const [seacrh,setSeacrh] = useState('')
+  const [direction,setDirection] = useState("")
   const [userLocation, setUserLocation] = useState(null);
 
   const getUserLocation = async () => {
@@ -166,20 +166,28 @@ const MainPage = () => {
       console.log("update");
     }).catch((err) => { console.log(err) });
   }, []);
-  const pincard = pin.map((data, index) => {
+  const pincard = pin.filter((win)=>{
+    return win.name.includes(seacrh)
+  }).map((data, index) => {
     const markericon = new Icon({
       iconUrl: data.type.pic,
       iconSize: [data.type.width,data.type.height]
     })
     return <Marker key={index} position={[data.lat,data.lng]} icon={markericon}>
             <Popup>
-              <Card data={data.infoCard[0]} toggle={()=>toggleReview(data.infoCard[0])} ></Card>
+              <Card data={data.infoCard[0]} direc={direction} setdirec={setDirection} toggle={()=>toggleReview(data.infoCard[0])} ></Card>
             </Popup>
             </Marker>
   })
   
-  const limeOptions = { color: 'lime' }
-
+  const limeOptions = { color: 'black' }
+  const test = pin.filter((krit)=>{
+    return krit.name === direction
+  }).map((data,index)=>{
+    return userLocation
+    ? [userLocation, [data.lat, data.lng]]
+    : [];
+  })
   const polyline = userLocation
   ? [userLocation, [13.825873, 100.516835]]
   : [];
@@ -197,12 +205,12 @@ const MainPage = () => {
           {pincard}
           {userLocation && <UserLocationMarker position={userLocation} icon={markerIconUser} />}
           {/* <MyComponent /> */}
-          {userLocation && <Polyline pathOptions={limeOptions} positions={polyline} />}
+          {userLocation && <Polyline pathOptions={limeOptions} positions={test} />}
         </MapContainer>
       </div>
 
       <div className="navbar">
-        <Navbar />
+        <Navbar setSearch={setSeacrh} search={seacrh} />
       </div>
       <img className="PomP" src="PomP.png" alt="" />
       
