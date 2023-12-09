@@ -37,14 +37,15 @@
 .container-botton{
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  align-items: center;
+  justify-content: center;
   margin-top: 35px;
 }
 .button-login{
   font-size: 23px;
   background-color: #d9d9d9;
   border: 0;
-  border-radius: 40px;
+    border-radius: 40px;
   width: 100px;
   height: 49px;
   margin-right: 50px;

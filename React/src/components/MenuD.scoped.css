@@ -39,6 +39,7 @@
     border: 1px solid #474545;
     /* Adjust the color and border properties as needed */
     margin: 10px;
+    
     /* Adjust the margin as needed */
 }
 .line2{
@@ -111,24 +112,28 @@
     /* margin-top: 1%; */
 }
 .contain-name{
-    margin-left: 2%;
+    margin-left: 5%;
     margin-bottom: 4vh
 }
 .s-name{
-    width: 7vw;
-    margin-left: 8%;
-    margin-top: 7%;
+    width: 5vw;
+    margin-left: 2vw;
+    border-radius: 50%;
+    position: relative;
+    top: 2vh;
+    
 }
 .t-name{
     font-size: 2vw;
-    margin-left: 8%;
+    margin-left: 1.75vw;
     margin-bottom: 0;
+    margin-top: 2vh;
     
 }
 .s-verr{
     width: 4vw;
     margin-left: 6%;
-    margin-top: 3.2vh;
+    margin-top: 0;
     margin-bottom: 4vh;
 }
 .login{
@@ -151,8 +156,17 @@
     bottom: 3%;  */
     
 }
+.noadmin{
+    height: 15vh;
+    width: 1vw;
+    background-color: #312F2E;
+
+}
 .pic-login{
     margin-left: 7%;
+}
+.pic{
+    border-radius: 50%;
 }
 .t-login{
     font-size: 1.5vw;
@@ -198,9 +212,9 @@ label{
     background-color: #312f2e;
     /* position: absolute; */
     /* margin: auto; */
-    margin-left: 1vw;
+    margin-left: 1.5vw;
     
-    top: 0;
+    top: 2vh;
     bottom: 0;
     left: 0;
     right: 0;

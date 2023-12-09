@@ -42,7 +42,7 @@ const WReview = (props) => {
   const [picture,setPicture] = useState([]);
   const addComment = () => {
     // console.log(picture)
-    if (token === false) {
+    if (token === null) {
       alert("เข้าสู่ระเบิดก่อนเด้อพี่น้อง")
     } else {
       axios.post('http://localhost:3001/comment', {
@@ -91,48 +91,48 @@ const WReview = (props) => {
   //   }
   // }
 
-  async function onUpload1(filename){
-    const { data } = supabase.storage.from('pictureComment').getPublicUrl(filename)
-    console.log(data)
-    // updataComment({ picture : data?.publicUrl })
-    setPicture(data.publicUrl);
+  // async function onUpload1(filename){
+  //   const { data } = supabase.storage.from('pictureComment').getPublicUrl(filename)
+  //   console.log(data)
+  //   // updataComment({ picture : data?.publicUrl })
+  //   setPicture(data.publicUrl);
     
-    console.log(picture)
-  } 
+  //   console.log(picture)
+  // } 
   const [loading ,setLoading] = useState(true);
-  const onUpload = async (url) => {
+  // const onUpload = async (url) => {
 
-    const { data } = await supabase.storage.from('pictureComment').getPublicUrl(url)
-    console.log(data)
+  //   const { data } = await supabase.storage.from('pictureComment').getPublicUrl(url)
+  //   console.log(data)
     
-    await setPicture(data.publicUrl);
-    await console.log(picture)
-  }
-  async function  getPicture (){
-    await onUpload(filepath)
-  }
-  async function updataComment({ picture }) {
-    try {
-      setLoading(true);
-      const user = token?.user
-      const updates = {
-        id: user.id,
-        picture,
-      }
-      console.log(user)
-      let { error } = await supabase.from('comment').upsert(updates, {
-        returning: "minimal"
-      })
-      if (error) {
-        throw error;
-      }
-    } catch (error) {
-      // alert(error.message);
-      console.log(error)
-    } finally {
-      setLoading(false);
-    }
-  }
+  //   await setPicture(data.publicUrl);
+  //   await console.log(picture)
+  // }
+  // async function  getPicture (){
+  //   await onUpload(filepath)
+  // }
+  // async function updataComment({ picture }) {
+  //   try {
+  //     setLoading(true);
+  //     const user = token?.user
+  //     const updates = {
+  //       id: user.id,
+  //       picture,
+  //     }
+  //     console.log(user)
+  //     let { error } = await supabase.from('comment').upsert(updates, {
+  //       returning: "minimal"
+  //     })
+  //     if (error) {
+  //       throw error;
+  //     }
+  //   } catch (error) {
+  //     alert(error.message);
+  //     console.log(error)
+  //   } finally {
+  //     setLoading(false);
+  //   }
+  // }
 
   // const [pictureUrl, setPictureUrl] = useState(null);
   const [uploading, setUploading] = useState(false);
@@ -145,7 +145,7 @@ const WReview = (props) => {
       }
       const file = event.target.files[0];
       const fileExt = file.name.split('.').pop();
-      const fileName = `${token?.user?.id}.${fileExt}`;
+      const fileName = `${token?.user?.id+ Math.random()}.${fileExt}`;
       const filePath = `${fileName}`
       let { error: uploadError } = await supabase.storage.from('pictureComment').upload(filePath, file, { upsert: true });
       if (uploadError) {
@@ -198,10 +198,7 @@ const WReview = (props) => {
         <button className="b-cancel" onClick={() => close(!status)} >Cancel</button>
         {/* <button onClick={getPicture, addComment} className="b-submit">Submit</button> */}
         <button onClick={()=>{
-          // await getPicture();
-          // await onUpload1(filepath);
-          
-          // await sleep(5000)
+         
           console.log(picture)
           addComment();
         }} className="b-submit">Submit</button>

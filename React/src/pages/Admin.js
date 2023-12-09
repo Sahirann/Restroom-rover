@@ -91,19 +91,27 @@ const Admin = () => {
     }).catch((err) => { console.log(err) });
   }, []);
   
-  // console.log(pin)
-
-  const Hello = pin.map((data, index) => {
-    return  { 
-      id: randomId(),
-      name: data?.infoCard[0]?.name,
-      address: data?.infoCard[0]?.address,
-      lat: data.lat.toString(),
-      lng: data.lng.toString(),
-      restroomtype: data?.type?.color,
-    }
-  })
-  console.log(Hello)
+  console.log(pin)
+  // const deletepin = (id) =>{
+  //   axios.delete(`http://localhost:3001/admin/${id}`).then((response)=>{
+  //   setpin(
+  //     pin.filter((val)=>{
+  //       return id != id;
+  //     })
+  //   )  
+  //   })
+  // }
+  // const Hello = pin.map((data, index) => {
+  //   return  { 
+  //     id: randomId(),
+  //     name: data?.infoCard[0]?.name,
+  //     address: data?.infoCard[0]?.address,
+  //     lat: data.lat.toString(),
+  //     lng: data.lng.toString(),
+  //     restroomtype: data?.type?.color,
+  //   }
+  // })
+  
   // console.log(pin[0])
   // const initialRows1 = [
   //   {
@@ -158,8 +166,20 @@ const Admin = () => {
       restroomtype: "ฟรีโว้ย",
     }
   ];
+  useEffect(()=>{
+    setRows( pin.map((data, index) => {
+      return  { 
+        id: randomId(),
+        name: data?.infoCard[0]?.name,
+        address: data?.infoCard[0]?.address,
+        lat: data.lat.toString(),
+        lng: data.lng.toString(),
+        restroomtype: data?.type?.color,
+      }
+    }))
+  },[pin])
   console.log(initialRows)
-  const [rows, setRows] = React.useState(Hello);
+  const [rows, setRows] = React.useState([]);
   const [rowModesModel, setRowModesModel] = React.useState({});
 
   const handleRowEditStop = (params, event) => {
@@ -177,9 +197,19 @@ const Admin = () => {
   };
 
   const handleDeleteClick = (id) => () => {
+    // axios.delete(`http://localhost:3001/admin/${id}`).then((response)=>{
     setRows(rows.filter((row) => row.id !== id));
+    // })
   };
-
+  // const deletepin = (id) =>{
+  //   axios.delete(`http://localhost:3001/admin/${id}`).then((response)=>{
+  //   setpin(
+  //     pin.filter((val)=>{
+  //       return id != id;
+  //     })
+  //   )  
+  //   })
+  // }
   const handleCancelClick = (id) => () => {
     setRowModesModel({
       ...rowModesModel,
@@ -213,33 +243,8 @@ const Admin = () => {
       width: 220,
       editable: true,
       type: 'singleSelect',
-      valueOptions: ['Orange', 'Green', 'Red'],
+      valueOptions: ['Free', 'Must Paid', 'Toilets in stores'],
     },
-
-    //   {
-    //     field: 'age',
-    //     headerName: 'Age',
-    //     type: 'number',
-    //     width: 80,
-    //     align: 'left',
-    //     headerAlign: 'left',
-    //     editable: true,
-    //   },
-    //   {
-    //     field: 'joinDate',
-    //     headerName: 'Join date',
-    //     type: 'date',
-    //     width: 180,
-    //     editable: true,
-    //   },
-    //   {
-    //     field: 'role',
-    //     headerName: 'Department',
-    //     width: 220,
-    //     editable: true,
-    //     type: 'singleSelect',
-    //     valueOptions: ['Market', 'Finance', 'Development'],
-    //   },
     {
       field: 'actions',
       type: 'actions',
@@ -280,7 +285,10 @@ const Admin = () => {
           <GridActionsCellItem
             icon={<DeleteIcon />}
             label="Delete"
-            onClick={handleDeleteClick(id)}
+            onClick={ 
+              
+              handleDeleteClick(id)
+            }
             color="inherit"
           />,
         ];
@@ -330,6 +338,7 @@ const Admin = () => {
         </div>
       </div>
     </div>
+    
   );
 
 }

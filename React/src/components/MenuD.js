@@ -15,6 +15,21 @@ const Win = () => {
         return (<div>kritza</div>)
     }
 }
+// const Check_admin = ()=>{
+//     console.log('3')
+//     useEffect(()=>{
+//         console.log(role?.role)
+//         if (role.role ==='admin'){
+//             return (<Link to="/admin" className="submenu">
+//                     <img src="admin.png" alt="" className="s-admin" />
+//                     <p className="t-con">Admin</p>
+//                 </Link>)
+//         }
+//         else{
+//             return (<div/>)
+//         }
+//     },[role])
+// }
 
 function ShowName({ token }) {
     if (token) {
@@ -32,23 +47,91 @@ function MenuD(props) {
     const Slidestyle = isOpen ? "open" : "close"
 
     async function handleLogout() {
-       
+
         const { error } = await supabase.auth.signOut()
-       
+
     }
+    const [role, setRole] = useState({});
+    useEffect(() => {
+        axios.post("http://localhost:3001/role", { token_id: token?.user?.id }).then((response) => {
+            setRole(response.data);
+            console.log("update");
+        }).catch((err) => { console.log(err) });
+        // console.log('1')
+    }, [token?.user?.id]);
 
+    // const [verify, setVerify] = useState({});
+    // useEffect(() => {
+    //     axios.post("http://localhost:3001/role",{token_id : token?.user?.id}).then((response) => {
+    //         setVerify(response.data);
+    //         console.log("update");
+    //     }).catch((err) => { console.log(err) });
+    //     console.log('1')
+    // }, [token?.user?.id]);
 
-    const [loading ,setLoading] = useState(true);
-    const [username,setUsername]= useState(null);
+    const [admin, setAdmin] = useState(false)
+    const [loading, setLoading] = useState(true);
+    const [username, setUsername] = useState(null);
+    // console.log(verify)
     // const [avatar_url,setAvatar] = useState(null);
     // const  url = avatar_url
-    
-    const onUpload = (url) =>{ 
+    // if (token?.user?.user_metadata?.id = ){
+    const Check_admin = () => {
+        // console.log('3')
+
+        if (role.role === 'admin') {
+            return (<Link to="/admin" className="submenu">
+                <img src="admin.png" alt="" className="s-admin" />
+                <p className="t-con">Admin</p>
+            </Link>)
+        }
+        else {
+            return (<div className="noadmin" ></div>)
+        }
+    }
+    console.log(role?.verify)
+    const Check_verify_yes = () => {
+        // console.log('456')
+
+        if (role.verify === 'yes') {
+            return (<img src="Vaccount.png" alt="" className="s-verr" />)
+        }
+    }
+    const Check_verify_no = () => {
+        
+        if (role.verify === 'no') {
+           
+            return (<Link to="/verify" className="V-acc">
+            <img src="Vaccount.png" alt="" className="s-ver" />
+            <p className="t-ver">Verify account</p>
+        </Link>)
+        }
+    }
+    const Check_avatar = () => {
+        
+        if ( token !== null ) {
+            return (<div>
+                    <label style={{ width: "5vw", fontSize: "0.7vw", left: "0.2vw", position: "relative" }} htmlFor="single">
+                    <AddPhotoAlternateIcon /> {uploading ? "Uploading..." : "Choose your image"}
+                    </label>
+                    <input
+                    type="file"
+                    id="single"
+                    accept="image/*"
+                    onChange={uploadAvatar}
+                    disabled={uploading} />
+                    </div> )
+        }
+    }
+
+    // console.log(token)
+    // }
+    const onUpload = (url) => {
 
         const { data } = supabase.storage.from('avatars').getPublicUrl(url)
         console.log(data)
         // setAvatar(data?.publicUrl)
-        updataProfile({username:token?.user?.user_metadata?.Username,avatar_url:data?.publicUrl})
+        updataProfile({ username: token?.user?.user_metadata?.Username, avatar_url: data?.publicUrl })
     }
     // useEffect(()=>{
     //     getProfile();
@@ -75,37 +158,38 @@ function MenuD(props) {
     //         setLoading(false);
     //     }
     // }
-    async function updataProfile({username,avatar_url}){
-        try{
+    async function updataProfile({ username, avatar_url }) {
+        try {
             setLoading(true);
             // const user = supabase.auth.user();
-            
-            const user  = token?.user
+
+            const user = token?.user
             const updates = {
-                id : user.id,
+                id: user.id,
                 username,
                 avatar_url,
                 updated_at: new Date(),
-                
+
             }
             console.log(user)
             let { error } = await supabase.from('profiles').upsert(updates, {
-                returning : "minimal"
+                returning: "minimal"
             })
-            const { data, error1 } = await supabase.auth.updateUser({data: { avatar_url: avatar_url }
-  })
-            if (error){
+            const { data, error1 } = await supabase.auth.updateUser({
+                data: { avatar_url: avatar_url }
+            })
+            if (error) {
                 throw error;
             }
-        } catch(error){
+        } catch (error) {
             // alert(error.message);
             console.log(error)
-        } finally{
+        } finally {
             setLoading(false);
         }
     }
 
-   
+
     // const [profile, setProfile] = useState([]);
     // useEffect(() => {
     //     axios.get("http://localhost:3001/getprofile").then((response) => {
@@ -120,8 +204,8 @@ function MenuD(props) {
 
     const [avatarUrl, setAvatarUrl] = useState(null);
     const [uploading, setUploading] = useState(false);
-    
-    
+
+
     // useEffect(() => {
     //     if (url) downloadImage(url);
     // }, [url]);
@@ -148,7 +232,7 @@ function MenuD(props) {
             const fileExt = file.name.split('.').pop();
             const fileName = `${token?.user?.id}.${fileExt}`;
             const filePath = `${fileName}`
-            let { error: uploadError } = await supabase.storage.from('avatars').upload(filePath, file,{upsert:true});
+            let { error: uploadError } = await supabase.storage.from('avatars').upload(filePath, file, { upsert: true });
             if (uploadError) {
                 throw uploadError;
             }
@@ -164,7 +248,7 @@ function MenuD(props) {
 
 
 
-    
+
     return (
 
         <div className={`background ${Slidestyle}`}>
@@ -183,11 +267,15 @@ function MenuD(props) {
                     <img src="Csupport.png" alt="" className="s-con" />
                     <p className="t-con">Contact support</p>
                 </Link>
-                <Link to="/admin" className="submenu">
+                <Check_admin />
+               
+
+                {/* <Link to="/admin" className="submenu">
                     <img src="admin.png" alt="" className="s-admin" />
                     <p className="t-con">Admin</p>
-                </Link>
+                </Link> */}
             </div>
+
             <hr className="line2" />
             {/* <Link to="/verify" className="V-acc">
                     <img src="Vaccount.png" alt="" className="s-ver" />
@@ -199,13 +287,16 @@ function MenuD(props) {
                     Choose your Profile
                 </label> */}
                 <div className="profile">
+                    <div className="pic">
                     {token?.user?.user_metadata?.avatar_url ? (
-                        <img src={token?.user?.user_metadata?.avatar_url+"?nocache=" + Date.now().toString()} alt="Avatar" className="s-name"></img>
+                        <img src={token?.user?.user_metadata?.avatar_url + "?nocache=" + Date.now().toString()} alt="Avatar" className="s-name"></img>
                     ) : (<img src="formpic.png" alt="" className="s-name" />
-                        
+
                     )}
-                    <label style={{ width: "5vw", fontSize: "0.7vw", left: "0.2vw", position: "relative" }} htmlFor="single">
-                        <AddPhotoAlternateIcon /> {uploading ? "Uploading...":"Choose your image"}
+                    </div>
+                    <Check_avatar/>
+                    {/* <label style={{ width: "5vw", fontSize: "0.7vw", left: "0.2vw", position: "relative" }} htmlFor="single">
+                        <AddPhotoAlternateIcon /> {uploading ? "Uploading..." : "Choose your image"}
                     </label>
                     <input
                         type="file"
@@ -213,7 +304,7 @@ function MenuD(props) {
                         accept="image/*"
                         onChange={uploadAvatar}
                         disabled={uploading}
-                    />
+                    /> */}
                 </div>
                 {/* <div className="profile">
                     <img src="formpic.png" alt="" className="s-name" />
@@ -226,12 +317,15 @@ function MenuD(props) {
                     <p className="t-name">{token?.user?.user_metadata?.Username ?? "Guest"}</p>
                     {/* {ShowName(token)} */}
                     {/* <ShowName token={token} /> */}
-                    <Link to="/verify" className="V-acc">
+                    {/* <Link to="/verify" className="V-acc">
                         <img src="Vaccount.png" alt="" className="s-ver" />
-                        <p className="t-ver">Verify account</p>
-                    </Link>
+                        <p className="t-ver">Verify account</p> 
+                       
+                    </Link> */}
+                    <Check_verify_no/>
                 </div>
-                <img src="Vaccount.png" alt="" className="s-verr" />
+                    <Check_verify_yes/>
+                {/* <img src="Vaccount.png" alt="" className="s-verr" /> */}
             </div>
             <Link to="/login" className="login" style={token ? { visibility: "hidden" } : { width: "37%" }}>
                 <img className="pic-login" src="login.svg" alt="" />
